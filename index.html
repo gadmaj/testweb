@@ -1,22 +1,65 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="noah.css" />
 
 <head>
-    <title>\Noahs paradise</title>
+    <title>gadmaj.org</title>
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(30deg);
+            }
+
+            50% {
+                transform: rotate(60deg);
+            }
+
+            75% {
+                transform: rotate(80deg);
+            }
+
+            80% {
+                transform: rotate(180deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .spin-text {
+            display: inline-block;
+            animation: spin 5s linear infinite;
+        }
+    </style>
 </head>
 
-<body>
+<body style="background-color:rgb(255, 255, 255);">
+    <h1>Gad Maj.org</h1>
+    <center>
 
-    <body style="background-color:rgb(255, 255, 255);">
-        
-        <center>
-                <h1>Welcome to noah </h1>
-                <p>this is noah</p>
-            <img src="noah1-removebg-preview.png" alt="Noah">
-        </center>
-        <img src="IMG_8024.jpg" aria-placeholder="fun" height="200" width="150" alt="Noah">
+        <p><span class="spin-text" id="spinText">Hey</span></p>
+        <a href="resume.pdf" target="_blank">resume</a> 
+    </center>
+    <script>
+        var spinText = document.getElementById("spinText");
+        var isSpinning = true;
 
-    </body>
+        function toggleSpin() {
+            if (isSpinning) {
+                spinText.style.animationPlayState = "paused";
+                isSpinning = false;
+            } else {
+                spinText.style.animationPlayState = "running";
+                isSpinning = true;
+            }
+        }
+
+        spinText.addEventListener("click", toggleSpin);
+    </script>
+</body>
 
 </html>
