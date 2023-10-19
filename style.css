@@ -1,0 +1,32 @@
+h1 {
+    font-size: 150px;
+    color: whitesmoke;
+}
+
+body {
+    background-color: rgb(15, 15, 15);
+    font-size: 75px;
+}
+.text{
+    color: darkblue;
+}
+.text:hover{
+    color: rgb(20, 20, 169);
+
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-text {
+    color: whitesmoke;
+    display: inline-block;
+    animation: spin 120s linear infinite;
+}

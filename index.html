@@ -4,59 +4,35 @@
 <head>
     <link rel="icon" href="websitelogo.png">
     <title>gadmaj.org</title>
-    <style>
-        h1 {
-            font-size: 150px;
-        }
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 
-        body {
-            font-size: 75px;
-        }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .spin-text {
-            display: inline-block;
-            animation: spin 120s linear infinite;
-        }
-    </style>
 </head>
 
-<body style="background-color:rgb(255, 255, 255);">
+<body>
     <h1>Gad Maj.org</h1>
+    <!-- ______ __  __ _____  _      ______     __  __  __ ______   _____  _       _____ 
+        |  ____|  \/  |  __ \| |    / __ \ \   / / |  \/  |  ____| |  __ \| |     / ____|
+        | |__  | \  / | |__) | |   | |  | \ \_/ /  | \  / | |__    | |__) | |    | (___  
+        |  __| | |\/| |  ___/| |   | |  | |\   /   | |\/| |  __|   |  ___/| |     \___ \ 
+        | |____| |  | | |    | |___| |__| | | |    | |  | | |____  | |    | |____ ____) |
+        |______|_|  |_|_|    |______\____/  |_|    |_|  |_|______| |_|    |______|_____/ 
+    -->
     <center>
 
         <p><span class="spin-text" id="spinText">Hey</span></p>
-        <a href="resume.pdf" target="_blank">resume</a>
-        <a href="https://github.com/gadmaj/" target="_blank">github</a>
-        <a href="https://www.linkedin.com/in/gad-major-892256277/" target="_blank">linkedin</a>
-        <a href="https://www.instagram.com/gad.major/" target="_blank">insta</a>
+        <a href="resume2.pdf" target="_blank" class="text">resume</a>
+        <a href="https://github.com/gadmaj/" target="_blank" class="text">github</a>
+        <a href="https://www.linkedin.com/in/gad-major-892256277/" target="_blank" class="text">linkedin</a>
+        <a href="https://www.instagram.com/gad.major/" target="_blank" class="text">insta</a>
+
 
     </center>
-    <script>
-        var spinText = document.getElementById("spinText");
-        var isSpinning = true;
+    <center>
+        <a href="http://3.214.65.190/" target="_blank" class="text"> current project</a>
+    </center>
 
-        function toggleSpin() {
-            if (isSpinning) {
-                spinText.style.animationPlayState = "paused";
-                isSpinning = false;
-            } else {
-                spinText.style.animationPlayState = "running";
-                isSpinning = true;
-            }
-        }
-
-        spinText.addEventListener("click", toggleSpin);
-    </script>
 </body>
 
 </html>
