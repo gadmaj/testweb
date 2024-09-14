@@ -10,8 +10,8 @@ body {
 }
 .title{
     font-size: 150px;
-    color: whitesmoke;
-    text-decoration: none;
+    color: whitesmoke !important;
+    text-decoration: none !important;
 }
 
 .text{
