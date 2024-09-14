@@ -8,18 +8,23 @@ body {
     background-color: rgb(15, 15, 15);
     font-size: 75px;
 }
-.title{
+
+.title {
     font-size: 150px;
     color: whitesmoke !important;
     text-decoration: none !important;
 }
+h1 a.title {
+    color: whitesmoke !important;
+    text-decoration: none !important;
+}
 
-.text{
+.text {
     color: darkblue;
 }
-.text:hover{
-    color: rgb(20, 20, 169);
 
+.text:hover {
+    color: rgb(20, 20, 169);
 }
 
 @keyframes spin {
@@ -37,3 +42,4 @@ body {
     display: inline-block;
     animation: spin 120s linear infinite;
 }
+
