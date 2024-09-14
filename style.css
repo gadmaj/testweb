@@ -1,45 +1,75 @@
-h1 {
-    font-size: 150px;
-    color: whitesmoke;
-    text-decoration: none;
-}
+ h1 {
+     font-size: 150px;
+     color: whitesmoke;
+     text-decoration: none;
+ }
 
-body {
-    background-color: rgb(15, 15, 15);
-    font-size: 75px;
-}
+ html,
+ body {
+     background-color: rgb(15, 15, 15);
+     font-size: 75px;
+     height: 75vh;
+     margin: 2%;
+     display: flex;
+     justify-content: center;
+ }
 
-.title {
-    font-size: 150px;
-    color: whitesmoke !important;
-    text-decoration: none !important;
-}
-h1 a.title {
-    color: whitesmoke !important;
-    text-decoration: none !important;
-}
+ .pdf-container {
+     align-items: end;
+     width: 80%;
+     height: auto;
+     aspect-ratio: auto;
+ }
 
-.text {
-    color: darkblue;
-}
+ .title {
+     font-size: 150px;
+     color: whitesmoke !important;
+     text-decoration: none !important;
+ }
 
-.text:hover {
-    color: rgb(20, 20, 169);
-}
+ h1 a.title {
+     color: whitesmoke !important;
+     text-decoration: none !important;
+ }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+ .text {
+     color: darkblue;
+ }
 
-    100% {
-        transform: rotate(360deg);
-    }
-}
+ .text:hover {
+     color: rgb(20, 20, 169);
+ }
 
-.spin-text {
-    color: whitesmoke;
-    display: inline-block;
-    animation: spin 120s linear infinite;
-}
+ @keyframes spin {
+     0% {
+         transform: rotate(0deg);
+     }
+
+     100% {
+         transform: rotate(360deg);
+     }
+ }
+
+ .spin-text {
+     color: whitesmoke;
+     display: inline-block;
+     animation: spin 120s linear infinite;
+ }
+
+
+
+
+ #pdf-page {
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     background-color: rgb(15, 15, 15);
+     margin: 0%;
+ }
+
+ .pdf-viewer {
+     width: 65%;
+     height: 100vh;
+     background-color: #fff;
+ }
 
