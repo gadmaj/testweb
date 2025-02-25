@@ -1,1 +1,1 @@
-website for resume and socials
+website for email footer
