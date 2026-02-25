@@ -1,0 +1,673 @@
+@charset "utf-8";
+
+.active {
+    height: auto;
+}
+
+.widget-wrapper {
+    padding-top: 44px;
+}
+p {
+    font-size: 30px;
+    letter-spacing: 0.15em;
+    color: var(--text-color);
+}
+#banner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(assets/photo/driphouse.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#album {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(assets/photo/album.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#glitch {
+    background-image: url(assets/photo/glitch.gif);
+    background-size: 100%;
+}
+
+
+#wip {
+    background-image: url(assets/photo/WIP.png);
+    background-size: 100%;
+}
+
+
+.Section-avatars {
+    position: sticky;
+    padding: 0;
+    height: auto;
+}
+
+.avatars-scroll-container,
+.avatars-wrap {
+    height: 150%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    scroll-behavior: smooth;
+}
+
+.avatars {
+    --avatar-w-large: 100px;
+    --avatar-w-mid: calc(100vw / 4);
+    --avatar-w-mobile: calc((70vw) * 8 / 8);
+    --avatar-m-t: 0ms;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    width: 100%;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+}
+
+.avatars-row {
+    --avatar-w-large: 100px;
+    --avatar-w-mid: calc(100vw / 4);
+    --avatar-w-mobile: calc((70vw) * 8 / 8);
+    --avatar-m-t: 0ms;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    width: 100%;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+}
+
+
+@media screen and (min-width: 1100px) {
+    .avatars {
+        --avatar-w-mobile: calc(100vw / 4);
+    }
+}
+
+.avatar-wrap {
+    height: var(--avatar-w-large);
+    width: var(--avatar-w-large);
+    transition: width 1s, height 1s;
+}
+
+.avatar-wrap-small {
+    height: var(--avatar-w-mid);
+    width: var(--avatar-w-mid);
+    transition: width 1s, height 1s;
+    padding-bottom: 25vh;
+}
+
+.avatar {
+    height: 100%;
+    width: 100%;
+}
+
+.avatar-swap {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: opacity 0.3s;
+}
+
+.banner-swap {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: opacity 0.3s;
+    transform: translateY(-100%);
+}
+
+.avatar-default {
+    transform: translateY(-100%);
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: opacity 0.3s;
+    /* filter: blur(1px); */
+}
+
+.avatar-default,
+.avatar-wrap:hover .avatar-swap {
+    opacity: 1;
+}
+
+.avatar-wrap:hover .avatar-default,
+.avatar-swap {
+    opacity: 0;
+}
+
+.avatar-text {
+    width: 650%;
+    font-size: 40px;
+    font-weight: 650;
+    text-align: center;
+    text-size-adjust: 1000;
+    text-shadow: #000000 1px 0 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-wrap:hover .avatar-text {
+    opacity: 1;
+}
+
+@media screen and (min-width: 641px) and (max-width: 1000px) {
+
+    /*.large-visible, .small-visible {
+        display: none;
+    }*/
+    .avatar {
+        width: var(--avatar-w-mid);
+        height: var(--avatar-w-mid);
+        -webkit-transition: width 0.1s, height 0.1s;
+        -o-transition: width 0.1s, height 0.1s;
+        transition: width 0.1s, height 0.1s;
+    }
+
+    .avatar-wrap {
+        width: var(--avatar-w-mid);
+        height: calc(var(--avatar-w-mid) + 20px);
+        -webkit-transition: width 0.1s, height 0.1s;
+        -o-transition: width 0.1s, height 0.1s;
+        transition: width 0.1s, height 0.1s;
+    }
+
+    .avatar-text {
+        opacity: 1;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}
+
+
+/* #avatars-scroll {
+    height: 100vh;
+    overflow-y: scroll;
+    perspective-origin: 50% 50%;
+    perspective: 25vh;
+} */
+
+#avatars-scroll {
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto !important; /* Forces scrollability */
+    overflow-x: hidden;
+    scrollbar-width: none; /* Specifically for Firefox */
+    perspective: 25vh;
+    perspective-origin: 50% 50%;
+    display: block;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+.avatars-scroll-container {
+    display: block;
+    position: relative;
+    padding: 0;
+}
+
+.small-visible .avatars:last-of-type {
+    margin-bottom: 220px;
+}
+
+.large-visible,
+.mid-visible {
+    display: none;
+}
+
+.small-visible .avatars:nth-of-type(odd) {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.avatar-wrap {
+    width: var(--avatar-w-mobile);
+    height: var(--avatar-w-mobile);
+    -webkit-transition: width var(--avatar-m-t), height var(--avatar-m-t);
+    -o-transition: width var(--avatar-m-t), height var(--avatar-m-t);
+    transition: width var(--avatar-m-t), height var(--avatar-m-t);
+}
+
+.avatar {
+    width: var(--avatar-w-mobile);
+    height: var(--avatar-w-mobile);
+    -webkit-transition: width var(--avatar-m-t), height var(--avatar-m-t);
+    -o-transition: width var(--avatar-m-t), height var(--avatar-m-t);
+    transition: width var(--avatar-m-t), height var(--avatar-m-t);
+}
+
+.avatar-focus .avatar-swap {
+    opacity: 1;
+}
+
+.avatar-focus .avatar-default {
+    opacity: 0;
+}
+
+.avatar-text {
+    width: 100%;
+    pointer-events: none;
+    font-weight: 650;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.avatar-text h5 {
+    font-size: 36px;
+    letter-spacing: .2em;
+    color: var(--text-color);
+    border-radius: 8px;
+    box-shadow: 0 0 4px 2px #ffffffcc;
+}
+
+.avatar-text p {
+    font-size: 1.2em;
+    letter-spacing: 0.15em;
+    color: var(--text-color);
+}
+
+/* .animate-character {} */
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box !important;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    --background: rgb(0, 0, 0);
+    --base-text-font-size: 14px;
+    --text-font-family: "Montserrat", sans-serif;
+    --text-font-weight: 500;
+    --text-font-style: normal;
+    --text-color: #ffffff;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+a {
+    color: inherit;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-style: none;
+    vertical-align: top;
+}
+
+pre {
+    overflow: auto;
+}
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 6px 10px 12px;
+}
+
+legend {
+    border: 0;
+    padding: 0;
+}
+
+textarea {
+    overflow: auto;
+}
+
+optgroup {
+    font-weight: bold;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td,
+th {
+    padding: 0;
+}
+
+.js .no-js,
+.no-js .hide-no-js {
+    display: none !important;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+body:not(.is-tabbing) [tabindex]:focus,
+body:not(.is-tabbing) button:focus,
+body:not(.is-tabbing) input:focus,
+body:not(.is-tabbing) select:focus,
+body:not(.is-tabbing) textarea:focus {
+    outline: none;
+}
+
+[data-scrollable] {
+    overflow: auto;
+    /*-webkit-overflow-scrolling: touch;*/
+}
+
+html {
+    font-size: var(--base-text-font-size);
+}
+
+body {
+    font-family: var(--text-font-family);
+    font-weight: var(--text-font-weight);
+    font-style: var(--text-font-style);
+    color: var(--text-color);
+    background: var(--background);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.portal-wrapper {
+    background-color: transparent !important;
+    overflow: initial !important;
+}
+
+.Image--fadeIn {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.AspectRatio {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.AspectRatio::before {
+    content: "";
+    display: block;
+}
+
+.AspectRatio>img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.AspectRatio--withFallback>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+@supports (--css: variables) {
+
+    .AspectRatio--withFallback {
+        padding-bottom: 0 !important;
+    }
+
+    .AspectRatio::before {
+        padding-bottom: calc(100% / (var(--aspect-ratio)));
+    }
+
+    .AspectRatio>img,
+    .no-js .AspectRatio>noscript img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.AspectRatio--square::before {
+    padding-bottom: 100%;
+}
+
+.AspectRatio--short::before {
+    padding-bottom: 75%;
+}
+
+.AspectRatio--tall::before {
+    padding-bottom: 150%;
+}
+
+.AspectRatio--square>img,
+.AspectRatio--short>img,
+.AspectRatio--tall>img {
+    position: absolute;
+    width: auto;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@supports ((-o-object-fit: contain) or (object-fit: contain)) {
+
+    .AspectRatio--square>img,
+    .AspectRatio--short>img,
+    .AspectRatio--tall>img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: contain;
+        object-fit: contain;
+    }
+}
+
+.Image--lazyLoad[data-sizes=auto] {
+    width: 100%;
+    /* this is needed to help LazySizes calculate the correct size */
+}
+
+.PageContent {
+    max-width: 1000px;
+    margin: 35px auto;
+}
+
+.PageContent--fitScreen {
+    display: flex;
+    min-height: calc(100vh - 120px);
+    align-items: center;
+}
+
+/* When a spacing is applied to a bordered section, as it is isolated, we use padding, otherwise margin */
+.Section--spacingNormal {
+    margin: 50px 0;
+}
+
+.Section--spacingLarge,
+.Section--spacingExtraLarge {
+    margin: 90px 0;
+}
+
+.SectionHeader:not(:only-child) {
+    margin-bottom: 40px;
+}
+
+@media screen and (min-width: 1008px) {
+
+    .Section--spacingNormal {
+        margin: 80px 0;
+    }
+
+    .Section--spacingLarge {
+        margin: 120px 0;
+    }
+
+    .Section--spacingExtraLarge {
+        margin: 145px 0;
+    }
+
+    .shopify-section--bordered>.Section--spacingNormal {
+        padding: 80px 0;
+    }
+
+    .shopify-section--bordered>.Section--spacingLarge {
+        padding: 120px 0;
+    }
+
+    .shopify-section--bordered>.Section--spacingExtraLarge {
+        padding: 145px 0;
+    }
+
+    .SectionHeader:not(:only-child) {
+        margin-bottom: 70px;
+    }
+
+    .SectionHeader__Description {
+        margin-top: 24px;
+    }
+
+    .SectionHeader__ButtonWrapper {
+        margin-top: 30px;
+    }
+
+    .SectionFooter {
+        margin-top: 80px;
+    }
+}
+
+
+.shrink .avatar {
+    width: 100%;
+}
+
+.banner {
+    height: 90%;
+}
+
+.album {
+    height: 50%;
+}
+/* 
+@media screen and (max-width: 1000px) {
+    .shrink .avatar-text {
+        height: 100%;
+    }
+} */
+
+.initial-hide {
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    height: 0;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+}
+
+#avatars-scroll {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    touch-action: pan-y; 
+}

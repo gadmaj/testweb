@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DRIPHOUSE</title>
+    <link rel="icon" href="assets/photo/WIP.png" />
+    <link rel="preload" as="style" href="theme.css">
+    <link rel="preload" as="image" href="assets/photo/driphouse.png">
+    <link rel="stylesheet" href="theme.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+
+<body>
+    <main id="main" role="main">
+        <div class="portal-wrapper">
+            <section>
+                <div>
+                    <div id="avatars-scroll" class="small-visible">
+                        <div class="avatars skip_rot" style="justify-content: center; height: 20vh;">
+                            <div class="avatar-wrap skip_rot">
+                                <div class="avatar skip_rot">
+                                    <div class="avatar-swap banner"></div>
+                                    <a class="banner-swap" id="banner" href="." target="_blank"
+                                        rel="noopener noreferrer"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="avatars skip_rot" style="justify-content: center">
+                            <div class="avatar-wrap skip_rot album">
+                                <div class="avatar skip_rot">
+                                    <div class="avatar-swap"></div>
+                                    <a onclick="gtag('event', 'go_album_poster', {});" class="banner-swap" id="album"
+                                        href="https://open.spotify.com/album/4FJ4YdvgqlnPB3qwBXD8y7" target="_blank"
+                                        rel="noopener noreferrer"></a>
+                                </div>
+                                <div class="avatar-text">
+                                    <p style="letter-spacing: unset; padding-top: 5vh;"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="avatars avatar-focus" id="avatar-onload" style="padding-top: 5vh;">
+                            <div class="avatar-wrap">
+                                <div class="avatar">
+                                    <div class="avatar-swap" id="glitch"></div>
+                                    <a onclick="gtag('event', 'go_syckli', {});" class="avatar-default" id="glitch"
+                                        href="./thiswasneverfinished/" target="_blank" rel="noopener noreferrer"></a>
+                                </div>
+                                <div class="avatar-text">
+                                    <p>developer note</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="avatars onclick-hide">
+                            <div class="avatar-wrap">
+                                <div class="avatar">
+                                    <div class="avatar-swap" id="wip"></div>
+                                    <a class="avatar-default" id="glitch" href="https://soundcloud.com/sindo-beats"
+                                        target="_blank" rel="noopener noreferrer"></a>
+                                </div>
+                                <div class="avatar-text">
+                                    <p>SoundCloud</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="avatars">
+                            <div class="avatar-wrap">
+                                <div class="avatar">
+                                    <div class="avatar-swap" id="wip"></div>
+                                    <a onclick="gtag('event', 'go_instagram', {});" class="avatar-default" id="glitch"
+                                        href="https://instagram.com/official.driphouse" target="_blank"
+                                        rel="noopener noreferrer"></a>
+                                </div>
+                                <div class="avatar-text">
+                                    <p>Instagram <style> </style>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="avatars">
+                            <div class="avatar-wrap">
+                                <div class="avatar">
+                                    <div class="avatar-swap" id="wip"></div>
+                                    <a class="avatar-default" id="glitch"
+                                        href="https://www.youtube.com/@driphouse7000/videos" target="_blank"
+                                        rel="noopener noreferrer"></a>
+                                </div>
+                                <div class="avatar-text">
+                                    <p>YouTube</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="avatars">
+                            <div class="avatar-wrap">
+                                <div class="avatar">
+                                    <div class="avatar-swap" id="wip"></div>
+                                    <a onclick="gtag('event', 'go_discord', {});" class="avatar-default" id="glitch"
+                                        href="https://discord.gg/" target="_blank" rel="noopener noreferrer"></a>
+                                </div>
+                                <div class="avatar-text">
+                                    <p>Discord</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="avatars">
+                            <div class="avatar-wrap">
+                                <div class="avatar">
+                                    <div class="avatar-swap"></div>
+                                </div>
+                                <div class="avatar-text">
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                function debounce(fn, delay = 100, options = {}) {
+                    let timerId;
+                    return (...args) => {
+                        const { leading = false, trailing = true } = options;
+                        const callNow = leading && !timerId;
+                        clearTimeout(timerId);
+                        timerId = setTimeout(() => {
+                            if (trailing || callNow) {
+                                fn(...args);
+                            }
+                            timerId = undefined;
+                        }, delay);
+                        if (callNow) {
+                            fn(...args);
+                        }
+                    };
+                }
+
+                const scrollElement = document.getElementById("avatars-scroll");
+                const avatarRows = Array.from(scrollElement.querySelectorAll(".avatars"));
+                const avatarWidth = (window.innerWidth - 4) / 2;
+                const midway = (scrollElement.offsetHeight / 2);
+
+                function handleAvatarRows() {
+                    const scrollTop = scrollElement.scrollTop;
+                    avatarRows.forEach((avatarRow) => {
+                        if (!avatarRow.classList.contains("skip_rot")) {
+                            const avatarCenter = avatarRow.offsetTop + avatarRow.offsetHeight / 2;
+                            const dToWrapCenter = Math.round(avatarCenter - scrollTop - midway);
+                            const delta = Math.abs(dToWrapCenter);
+                            avatarRow.classList.toggle("avatar-focus", delta < avatarWidth / 2);
+                            const setTransitionZ = -delta;
+                            // avatarRow.style.setProperty("filter", `brightness(${delta / 2000 + 1})`);
+                            avatarRow.style.setProperty("z-index", `${Math.round(setTransitionZ + 10000)}`);
+                            avatarRow.style.setProperty("transform", `translate3d(0,${dToWrapCenter / 2}px,${setTransitionZ}px)`);
+                        }
+                    });
+                }
+
+                handleAvatarRows();
+                scrollElement.addEventListener("scroll", debounce(handleAvatarRows, 0, { leading: true }), { passive: true });
+            </script>
+
+        </div>
+    </main>
+</body>
