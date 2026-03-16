@@ -248,14 +248,14 @@ async function doTake() {
     ctx.translate(cx, cy);
     ctx.rotate(layer.rotation * Math.PI / 180);
     ctx.scale(layer.scale, layer.scale);
-    
+    ctx.filter = 'grayscale(100%) brightness(1.3) contrast(1.1)';
     try { ctx.drawImage(img, -iw / 2, -ih / 2, iw, ih); }
     catch(err) { console.warn('CORS on layer:', layer.name); }
     ctx.restore();
   }
 
   const link = document.createElement('a');
-  link.download = 'export.png';
+  link.download = 'curation.png';
   link.href = offscreen.toDataURL('image/png');
   link.click();
 }
