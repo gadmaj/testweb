@@ -232,8 +232,9 @@ async function doTake() {
   const offscreen = document.createElement('canvas');
   offscreen.width = w; offscreen.height = h;
   const ctx = offscreen.getContext('2d');
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = 'transparent';
   ctx.fillRect(0, 0, w, h);
+  
 
   const sorted = [...layers].sort((a, b) => a.z - b.z);
   for (const layer of sorted) {
@@ -247,6 +248,7 @@ async function doTake() {
     ctx.translate(cx, cy);
     ctx.rotate(layer.rotation * Math.PI / 180);
     ctx.scale(layer.scale, layer.scale);
+    
     try { ctx.drawImage(img, -iw / 2, -ih / 2, iw, ih); }
     catch(err) { console.warn('CORS on layer:', layer.name); }
     ctx.restore();
