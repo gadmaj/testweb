@@ -1,11 +1,71 @@
-<!DOCTYPE html> 
+<!-- <!DOCTYPE html> 
 <html>  
     <head>    
         <meta charset="utf-8">    
         <meta name="viewport" content="width=device-width,initial-scale=1">    
-        <link rel="icon" href="../textures/Choose.png">    
-        <title>./1300green/בָּרָא/</title>    
+        <link rel="icon" href="../textures/1300.png">    
+        <title>/1300green/בָּרָא/</title>    
     </head>
+
     <body>
+    <center>
+        <h1>בָּרָא</h1>
+        <p>הַשָּׁמַיִם וְאֵת הָאָרֶץ</p>
+        <img src="../textures/Choose.png" style="width:300px;height:auto;">
+    </center>
+    </body>
+</html> -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../textures/Choose.png">
+  <title>/1300green/בָּרָא/</title>
+  <!-- <style></style> -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <button id="btn-give" onclick="triggerGive()"><strong>לָתֵת</strong> (give)</button>
+    <button id="btn-take" onclick="doTake()"><strong>לָקַחַת</strong> (take)</button>
+    <button id="btn-resources" onclick="openResources()"><strong>אֶמְצָעִי</strong> (resources)</button>
+  </div>
+  <span class="nav-hebrew">בָּרָא</span>
+  <div class="nav-logo" href="../index.html">
+    <img src="../textures/1300.png" alt="1300" onerror="this.style.display='none'">
+  </div>
+</nav>
+
+<input type="file" id="file-input" accept="image/*" multiple="">
+
+<div id="workspace-wrap">
+  <div id="canvas-area">
+    <div class="canvas-placeholder" id="placeholder">
+      </svg>
+      <span><strong>הַצָעָה</strong></span>
+    </div>
+  </div>
+
+  <div id="layer-panel">
+    <h3>מַדָד</h3>
+    <div id="layer-list"></div>
+    <div id="panel-actions">
+      <button onclick="moveLayer(1)">↑</button>
+      <button onclick="moveLayer(-1)">↓</button>
+    </div>
+  </div>
+</div>
+
+<div id="resources-modal" class="">
+  <div class="modal-box">
+    <h2>אֶמְצָעִי</h2>
+    <div class="preset-list" id="preset-list"><div class="preset-item">1300.png</div><div class="preset-item">Choose.png</div></div>
+    <button class="modal-close" onclick="closeResources()">×</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
 </body>
-</html>
