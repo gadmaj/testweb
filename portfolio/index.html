@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="icon" href="../gm.png">
-        <title>gadmaj.org | Portfolio</title>
+        <title>gadmaj.org/portfolio</title>
         <link rel="stylesheet" href="../latex.css" />
         <script type="module"
             src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
@@ -14,13 +14,9 @@
 
     <body class="portfolio-body">
         <main class="document-shell">
-            <h1>portfolio</h1>
+            <h1><a href="." class>gadmaj.org/portfolio</a></h1>
             <p class="author">Gad Major</p>
-            <p class="document-subtitle">Applied Mathematics
-                <span>&middot;</span> Robotics <span>&middot;</span> Teaching
-                <span>&middot;</span> Numerical Computing <span>&middot;</span>
-                Linux & Unix
-                systems</p>
+            <p class="document-subtitle">*currently work in progress</p>
 
             <p class="document-nav">
                 <a href="../">gadmaj.org</a>
@@ -37,15 +33,14 @@
             <section class="contents">
                 <h2>contents</h2>
                 <ul class="nav-list">
-                    <li><a href="#about">about</a></li>
-                    <li><a href="#projects">projects</a></li>
-                    <li><a href="#profile">technical profile</a></li>
-                    <li><a href="#teaching">teaching and mentoring</a></li>
+                    <li><a href="#abstract">abstract</a></li>
+                    <li><a href="#projects">highlighted projects</a></li>
+                    <li><a href="#teaching">teaching & mentoring</a></li>
                 </ul>
             </section>
 
-            <section id="about" class="about">
-                <h2>i. about</h2>
+            <section id="abstract" class="abstract">
+                <h2>i. abstract</h2>
                 <p>
                     I am a mathematics student at New York University building
                     software for robotics,
@@ -65,8 +60,8 @@
                     <h3>1.1. Autonomy and Localization, NYU Robotics Design
                         Team, NASA Lunabotics</h3>
                     <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2, Python, OpenCV, AprilTag
-                        tooling, launch files, Linux, Docker, networking.
+                        <strong>Stack.</strong> ROS 2, Python, C++, OpenCV,
+                        Linux, Docker
                     </p>
                     <p>
                         This is the strongest engineering work I have right now.
@@ -109,8 +104,8 @@
                     <h3>1.2. Ground Control, Manual Command Bridging, and Gazebo
                         Simulation</h3>
                     <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2, Gazebo, Python, robot
-                        models, launch files, controller input translation.
+                        <strong>Stack.</strong> ROS 2 + Gazebo, Python, Linux,
+                        Docker
                     </p>
                     <p>
                         This is the side of the work that makes the rover easier
@@ -120,15 +115,6 @@
                         launch files, and debugging how pieces talk to each
                         other.
                     </p>
-                    <ul>
-                        <li>Built or integrated manual-control workflows for
-                            simulation and rover testing.</li>
-                        <li>Worked with Gazebo launch files, models, and arena
-                            configuration.</li>
-                        <li>Used the project as a systems-integration
-                            environment rather than just a demo.</li>
-                    </ul>
-
                     <figure class="fig-figure">
                         <div class="fig-box">Insert arena screenshot,
                             control-flow figure, joystick diagram, or Gazebo
@@ -143,8 +129,7 @@
                     <h3>1.3. Newton and gradient methods on the Rosenbrock
                         surface</h3>
                     <p class="project-meta">
-                        <strong>Stack.</strong> MATLAB, optimization,
-                        visualization, multivariable calculus, linear algebra.
+                        <strong>Stack.</strong> MATLAB
                     </p>
                     <p>
                         In numerical analysis work, I implemented experiments
@@ -155,47 +140,163 @@
                         convergence behavior, failure cases, and visual
                         explanation in the same place.
                     </p>
-                    <ul>
-                        <li>Implemented Rosenbrock surface evaluation together
-                            with gradient and Hessian routines in MATLAB.</li>
-                        <li>Tracked Newton iterates across the surface to show
-                            how initialization and curvature affect
-                            convergence.</li>
-                        <li>Compared Newton trajectories with gradient-descent
-                            behavior using exported contour and surface
-                            figures.</li>
-                    </ul>
-                    <!-- <div class="figure-grid"> -->
+                    <div class="rosenbrock-layout">
+                        <div class="figure-grid rosenbrock-grid">
+                            <figure class="figure-card">
+                                <div class="fig-box">
+                                    <model-viewer
+                                        class="portfolio-model-viewer rosenbrock-viewer"
+                                        id="rosenbrock-newton-a"
+                                        camera-orbit="45deg 55deg 100000m"
+                                        interpolation-decay="100"
+                                        interaction-prompt="none"
+                                        tone-mapping="neutral"
+                                        exposure="0.7"
+                                        shadow-intensity=".55"
+                                        shadow-softness="0.9"
+                                        alt="Newton method on the Rosenbrock surface starting at (-1.9, 2.2)."
+                                        src="../assets/numerical/hw1_newton_x0_neg1p9_2p2.glb"
+                                        ar camera-controls
+                                        touch-action="pan-y">
+                                    </model-viewer>
+                                </div>
+                                <figcaption>Figure 4. Newton method from
+                                    <code>x_0 = (-1.9, 2.2)</code>, including
+                                    the
+                                    large off-screen excursion before
+                                    convergence.</figcaption>
+                            </figure>
 
-                    <figure class="fig-figure">
-                        <div class="fig-box">
-                            <model-viewer
-                                class="portfolio-model-viewer"
-                                id="rosenbrock"
-                                alt="Interactive 3d Rosenbrock surface model."
-                                src="../assets/my_rosenbrock (2).glb" ar
-                                shadow-intensity="0" camera-controls
-                                touch-action="pan-y">
-                            </model-viewer>
+                            <figure class="figure-card">
+                                <div class="fig-box">
+                                    <model-viewer
+                                        class="portfolio-model-viewer rosenbrock-viewer"
+                                        id="rosenbrock-newton-b"
+                                        camera-orbit="45deg 55deg 100000m"
+                                        interpolation-decay="100"
+                                        interaction-prompt="none"
+                                        tone-mapping="neutral"
+                                        exposure="0.82"
+                                        shadow-intensity=".55"
+                                        shadow-softness="0.9"
+                                        alt="Newton method on the Rosenbrock surface starting at (0.5, 1.8)."
+                                        src="../assets/numerical/hw1_newton_x0_0p5_1p8.glb"
+                                        ar camera-controls
+                                        touch-action="pan-y">
+                                    </model-viewer>
+                                </div>
+                                <figcaption>Figure 5. Newton method from
+                                    <code>x_0 = (0.5, 1.8)</code>, showing the
+                                    much
+                                    shorter path to the minimizer.</figcaption>
+                            </figure>
+
+                            <figure class="figure-card">
+                                <div class="fig-box">
+                                    <model-viewer
+                                        class="portfolio-model-viewer rosenbrock-viewer"
+                                        id="rosenbrock-gd-a"
+                                        interpolation-decay="100"
+                                        camera-orbit="45deg 55deg 100000m"
+                                        interaction-prompt="none"
+                                        tone-mapping="neutral"
+                                        exposure="0.82"
+                                        shadow-intensity=".55"
+                                        shadow-softness="0.9"
+                                        alt="Gradient descent on the Rosenbrock surface starting at (-1.9, 2.2)."
+                                        src="../assets/numerical/hw1_grad_desc_x0_neg1p9_2p2.glb"
+                                        ar camera-controls
+                                        touch-action="pan-y">
+                                    </model-viewer>
+                                </div>
+                                <figcaption>Figure 6. Gradient descent from
+                                    <code>x_0 = (-1.9, 2.2)</code> with
+                                    <code>\eta = 10^{-3}</code>, showing slow
+                                    progress along the valley.</figcaption>
+                            </figure>
+
+                            <figure class="figure-card">
+                                <div class="fig-box">
+                                    <model-viewer
+                                        class="portfolio-model-viewer rosenbrock-viewer"
+                                        id="rosenbrock-gd-b"
+                                        interpolation-decay="100"
+                                        camera-orbit="45deg 55deg 100000m"
+                                        interaction-prompt="none"
+                                        tone-mapping="neutral"
+                                        exposure="0.82"
+                                        shadow-intensity=".55"
+                                        shadow-softness="0.9"
+                                        alt="Gradient descent on the Rosenbrock surface starting at (0.5, 1.8)."
+                                        src="../assets/numerical/hw1_grad_desc_x0_0p5_1p8.glb"
+                                        ar camera-controls
+                                        touch-action="pan-y">
+                                    </model-viewer>
+                                </div>
+                                <figcaption>Figure 7. Gradient descent from
+                                    <code>x_0 = (0.5, 1.8)</code> with the same
+                                    step size, illustrating the non-converged
+                                    trajectory from the homework.</figcaption>
+                            </figure>
                         </div>
-                        <figcaption>Figure 2. Good place for the arena, control
-                            bridge, or a message-flow sketch.</figcaption>
-                    </figure>
+
+                        <aside class="rosenbrock-key"
+                            aria-labelledby="rosenbrock-key-title">
+                            <!-- <h4 id="rosenbrock-key-title"></h4> -->
+                            <div class="rosenbrock-key-body">
+                                <div class="rosenbrock-colorbar"
+                                    aria-hidden="true"></div>
+                                <div class="rosenbrock-key-labels">
+                                    <span><code>f(x,y) ≈ 10e4</code></span>
+                                    <span><code>f(x,y) ≈ 10e2</code></span>
+                                    <span><code>f(x,y) ≈ 10e-1</code></span>
+                                </div>
+                            </div>
+                            <p class="rosenbrock-key-note">
+                                This uses the same MATLAB <code>turbo</code>
+                                color map as the exported surface figures.
+                                Purple is lower and orange-red is higher.
+                            </p>
+                        </aside>
+                    </div>
 
                     <script>
-                    const modelViewerTransform = document.querySelector("model-viewer#rosenbrock");
-                    const x = { value: 2.5 };
-                    const y = { value: .2 };
-                    const z = { value: 2.5 };
-                    modelViewerTransform.scale = `${x.value} ${y.value} ${z.value}`;                        
-                </script>
+                        document.querySelectorAll("model-viewer.rosenbrock-viewer").forEach((viewer) => {
+                            const x = { value: 2.5 };
+                            const y = { value: .2 };
+                            const z = { value: 2.5 };
+                            viewer.scale = `${x.value} ${y.value} ${z.value}`;
+                            // viewer.querySelector('color-grade-viewer')
+                            const orbitCycle = [
+                                '45deg 55deg 100000m',
+                                '-45deg 55deg 200000m',
+                                '45deg 55deg 100000m',
+
+                                viewer.cameraOrbit
+                            ];      
+                            const orbitTimer = setInterval(() => {
+                                const currentOrbitIndex = orbitCycle.indexOf(viewer.cameraOrbit);
+                                viewer.cameraOrbit =
+                                    orbitCycle[(currentOrbitIndex + 1) % orbitCycle.length];
+                            }, 10000);
+
+                            const stopOrbitOnInteraction = (event) => {
+                                if (event.detail && event.detail.source === 'user-interaction') {
+                                    clearInterval(orbitTimer);
+                                    viewer.removeEventListener('camera-change', stopOrbitOnInteraction);
+                                }
+                            };
+
+                            viewer.addEventListener('camera-change', stopOrbitOnInteraction);
+                        });
+                    </script>
                 </article>
 
                 <article class="project-entry">
                     <h3>1.4. Bronco Space / Project BILL-EE</h3>
                     <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2, controls, inverse
-                        kinematics, mechanical and software integration.
+                        <strong>Stack.</strong> ROS 2, Python, C++, Linux,
+                        Docker
                     </p>
                     <p>
                         This project let me work closer to the controls and
@@ -212,15 +313,24 @@
                             control
                             ideas inside a ROS 2 workflow.</li>
                     </ul>
+
+
+                    <figure class="fig-figure">
+                        <div class="fig-box">
+                            <img src="../assets/billee/IMG_7744.jpg"
+                                alt="Project BILL-EE, a robotic arm built by Bronco Space for satellite servicing and debris removal."
+                                class="portfolio-model-viewer"
+                                style="object-fit: contain; width: 50%; height: 50%;">
+                        </div>
+                        <figcaption>Figure 8. Photo of me and Sam Ly (Lead Software Eng. '24) transporting the rover to our testing site</figcaption>
+                    </figure>
                 </article>
 
                 <article class="project-entry">
                     <h3>1.5. FIRST Robotics Competition, Team 589</h3>
                     <p class="project-meta">
                         <strong>Stack.</strong> Java, WPILib, Arduino, REV
-                        Robotics, National Instruments, localization,
-                        autonomous
-                        systems.
+                        Robotics, National Instruments, LimeLight, Photonvision
                     </p>
                     <p>
                         This is where a lot of my software identity got
@@ -248,105 +358,32 @@
                 </article>
             </section>
 
-            <section id="profile">
-                <h2>2. technical profile</h2>
-                <p>
-                    My working strengths are robotics software, numerical
-                    computing, technical writing, and Unix-based
-                    development.
-                </p>
-                <ul>
-                    <li><strong>Languages.</strong> Python, C++, Java,
-                        MATLAB,
-                        and growing familiarity with Rust.</li>
-                    <li><strong>Robotics.</strong> ROS 2, Gazebo, OpenCV,
-                        localization, launch workflows, and
-                        controls-oriented
-                        work.</li>
-                    <li><strong>Systems.</strong> Linux development
-                        environments, Docker, deployment-minded debugging,
-                        and
-                        infrastructure setup.</li>
-                    <!-- <li><strong>Communication.</strong> Technical writing, teaching, documentation, and presentation work.</li> -->
-                </ul>
-            </section>
-
             <section id="teaching">
-                <h2>3. teaching and mentoring</h2>
+                <h2>2. teaching & mentoring</h2s>
 
-                <article class="project-entry">
-                    <h3>3.1. Crescenta Valley Tech Team</h3>
-                    <p class="project-meta">
-                        <strong>Dates.</strong> Aug 2018 - Jun 2024
-                    </p>
-                    <ul>
-                        <li>Maintained education technology across 60+
-                            classrooms and 5 computer labs.</li>
-                        <li>Installed and maintained IoT devices, printers,
-                            projectors, laptops, and Cisco network
-                            infrastructure.</li>
-                        <li>Raised $4.5k in grants from GUSD and CTE.</li>
-                    </ul>
-                </article>
+                <h3>Crescenta Valley High School Tech Team</h3>
+                <p class="project-meta">
+                    Chief Executive Officier<small>Aug 2021 - Jun 2024</small>
+                </p>
 
-                <article class="project-entry">
-                    <h3>3.2. National Technical Honor Society</h3>
-                    <p class="project-meta">
-                        <strong>Dates.</strong> Aug 2021 - Dec 2024
-                    </p>
-                    <p>
-                        This is some of the earliest work that made me care
-                        about teaching. It was hands-on, local, and not
-                        overdesigned, which honestly made it better.
-                    </p>
-                    <ul>
-                        <li>Ran after-school sessions on TinkerCAD, coding
-                            fundamentals, laptop dissection, and GSuite fun
-                            for
-                            neighboring elementary school students.</li>
-                        <li>Used hands-on activities instead of just
-                            explanations so students could touch the
-                            ideas.</li>
-                    </ul>
-                </article>
+                <h3>National Technical Honor Society</h3>
+                <p class="project-meta">
+                    <strong>Dates.</strong> Aug 2021 - Dec 2024
+                </p>
 
-                <article class="project-entry">
-                    <h3>3.3. FIRST Lego League Mentoring</h3>
-                    <p class="project-meta">
-                        <strong>Dates.</strong> Aug 2022 - Dec 2023
-                    </p>
-                    <p>
-                        Before fully diving into FRC, I spent time mentoring
-                        FIRST Lego League teams and helping support
-                        robotics for neighboring elementary schools.
-                    </p>
-                </article>
+                <h3>FIRST Lego League Mentoring</h3>
+                <p class="project-meta">
+                    <strong>Dates.</strong> Aug 2022 - Dec 2023
+                </p>
 
-                <article class="project-entry">
-                    <h3>3.4. Castilleja School</h3>
-                    <p class="project-meta">
-                        <strong>Dates.</strong> May 2025 - Sep 2025
-                    </p>
-                    <ul>
-                        <li>Co-authored an honors ai and machine learning
-                            curriculum.</li>
-                        <li>Built interactive labs around TensorFlow
-                            Playground,
-                            Teachable Machine, and scikit-learn.</li>
-                    </ul>
-                </article>
-
-                <article class="project-entry">
-                    <h3>3.5. M.S. 131, Sun Yat Sen Middle School</h3>
-                    <p class="project-meta">
-                        <strong>Dates.</strong> Feb 2026 - Current
-                    </p>
-                    <ul>
-                        <li>Work as a teaching assistant for accelerated
-                            algebra
-                            in New York City.</li>
-                    </ul>
-                </article>
+                <h3>Castilleja School</h3>
+                <p class="project-meta">
+                    <strong>Dates.</strong> May 2025 - Sep 2025
+                </p>
+                <h3>M.S. 131, Sun Yat Sen Middle School</h3>
+                <p class="project-meta">
+                    <strong>Dates.</strong> Feb 2026 - Current
+                </p>
             </section>
         </main>
     </body>
