@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" href="../gm.png">
+        <title>gadmaj.org | Portfolio</title>
+        <link rel="stylesheet" href="../latex.css" />
+        <script type="module"
+            src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
+
+    </head>
+
+    <body class="portfolio-body">
+        <main class="document-shell">
+            <h1>portfolio</h1>
+            <p class="author">Gad Major</p>
+            <p class="document-subtitle">Applied Mathematics
+                <span>&middot;</span> Robotics <span>&middot;</span> Teaching
+                <span>&middot;</span> Numerical Computing <span>&middot;</span>
+                Linux & Unix
+                systems</p>
+
+            <p class="document-nav">
+                <a href="../">gadmaj.org</a>
+                <span>&middot;</span>
+                <a href="mailto:glm8883@nyu.edu">email</a>
+                <span>&middot;</span>
+                <a href="https://github.com/gadmaj" target="_blank"
+                    rel="noreferrer">github</a>
+                <span>&middot;</span>
+                <a href="https://www.linkedin.com/in/gad-major/" target="_blank"
+                    rel="noreferrer">linkedin</a>
+            </p>
+
+            <section class="contents">
+                <h2>contents</h2>
+                <ul class="nav-list">
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#projects">projects</a></li>
+                    <li><a href="#profile">technical profile</a></li>
+                    <li><a href="#teaching">teaching and mentoring</a></li>
+                </ul>
+            </section>
+
+            <section id="about" class="about">
+                <h2>i. about</h2>
+                <p>
+                    I am a mathematics student at New York University building
+                    software for robotics,
+                    numerical methods, and Unix-based engineering workflows.
+                    This page is structurfed like a short technical document so
+                    I
+                    can
+                    show the work clearly and attach figures, screenshots, and
+                    diagrams as the projects are documented.
+                </p>
+            </section>
+
+            <section id="projects">
+                <h2>1. projects</h2>
+
+                <article class="project-entry">
+                    <h3>1.1. Autonomy and Localization, NYU Robotics Design
+                        Team, NASA Lunabotics</h3>
+                    <p class="project-meta">
+                        <strong>Stack.</strong> ROS 2, Python, OpenCV, AprilTag
+                        tooling, launch files, Linux, Docker, networking.
+                    </p>
+                    <p>
+                        This is the strongest engineering work I have right now.
+                        The project lives inside
+                        a team rover stack and includes autonomy, localization,
+                        perception, launchability,
+                        Linux systems work, and the integration work that makes
+                        the whole thing usable
+                        instead of just impressive on paper.
+                    </p>
+                    <ul>
+                        <li>Worked in a multi-package ROS 2 workspace spanning
+                            autonomy, localization, command handling, and
+                            interfaces.</li>
+                        <li>Contributed to camera and AprilTag-related
+                            localization workflows.</li>
+                        <li>Built a headless Ubuntu 24.04 image for the Jetson
+                            Orin Nano and tuned the footprint to cut bloat,
+                            latency, and swap overhead.</li>
+                        <li>Integrated a Docker-based ROS 2 wrapper so
+                            rover-side software was more controlled and
+                            reproducible.</li>
+                        <li>Helped tighten rover-to-ground-control traffic and
+                            packet flow.</li>
+                        <li>I also help with the marketing and presentation side
+                            of RDT so the work can actually be shown and
+                            explained.</li>
+                    </ul>
+                    <figure class="fig-figure">
+                        <div class="fig-box">Insert rover autonomy
+                            figure, RViz screenshot, team slide, or system
+                            diagram here.</div>
+                        <figcaption>Figure 1. Good place for autonomy stack,
+                            localization view, or a slide used for
+                            RDT.</figcaption>
+                    </figure>
+                </article>
+
+                <article class="project-entry">
+                    <h3>1.2. Ground Control, Manual Command Bridging, and Gazebo
+                        Simulation</h3>
+                    <p class="project-meta">
+                        <strong>Stack.</strong> ROS 2, Gazebo, Python, robot
+                        models, launch files, controller input translation.
+                    </p>
+                    <p>
+                        This is the side of the work that makes the rover easier
+                        to test and easier to drive. It is less glamorous
+                        than autonomy, but it is closer to what real systems
+                        work feels like: command paths, simulation setup,
+                        launch files, and debugging how pieces talk to each
+                        other.
+                    </p>
+                    <ul>
+                        <li>Built or integrated manual-control workflows for
+                            simulation and rover testing.</li>
+                        <li>Worked with Gazebo launch files, models, and arena
+                            configuration.</li>
+                        <li>Used the project as a systems-integration
+                            environment rather than just a demo.</li>
+                    </ul>
+
+                    <figure class="fig-figure">
+                        <div class="fig-box">Insert arena screenshot,
+                            control-flow figure, joystick diagram, or Gazebo
+                            world view here.</div>
+                        <figcaption>Figure 2. Good place for the arena, control
+                            bridge, or a message-flow sketch.</figcaption>
+                    </figure>
+
+                </article>
+
+                <article class="project-entry">
+                    <h3>1.3. Newton and gradient methods on the Rosenbrock
+                        surface</h3>
+                    <p class="project-meta">
+                        <strong>Stack.</strong> MATLAB, optimization,
+                        visualization, multivariable calculus, linear algebra.
+                    </p>
+                    <p>
+                        In numerical analysis work, I implemented experiments
+                        around Newton's method, gradient-based updates, and
+                        visualization for nonlinear surfaces in two variables.
+                        This is the kind of math-to-code work I want in the
+                        portfolio because it shows gradients, Hessians,
+                        convergence behavior, failure cases, and visual
+                        explanation in the same place.
+                    </p>
+                    <ul>
+                        <li>Implemented Rosenbrock surface evaluation together
+                            with gradient and Hessian routines in MATLAB.</li>
+                        <li>Tracked Newton iterates across the surface to show
+                            how initialization and curvature affect
+                            convergence.</li>
+                        <li>Compared Newton trajectories with gradient-descent
+                            behavior using exported contour and surface
+                            figures.</li>
+                    </ul>
+                    <!-- <div class="figure-grid"> -->
+
+                    <figure class="fig-figure">
+                        <div class="fig-box">
+                            <model-viewer
+                                class="portfolio-model-viewer"
+                                id="rosenbrock"
+                                alt="Interactive 3d Rosenbrock surface model."
+                                src="../assets/my_rosenbrock (2).glb" ar
+                                shadow-intensity="0" camera-controls
+                                touch-action="pan-y">
+                            </model-viewer>
+                        </div>
+                        <figcaption>Figure 2. Good place for the arena, control
+                            bridge, or a message-flow sketch.</figcaption>
+                    </figure>
+
+                    <script>
+                    const modelViewerTransform = document.querySelector("model-viewer#rosenbrock");
+                    const x = { value: 2.5 };
+                    const y = { value: .2 };
+                    const z = { value: 2.5 };
+                    modelViewerTransform.scale = `${x.value} ${y.value} ${z.value}`;                        
+                </script>
+                </article>
+
+                <article class="project-entry">
+                    <h3>1.4. Bronco Space / Project BILL-EE</h3>
+                    <p class="project-meta">
+                        <strong>Stack.</strong> ROS 2, controls, inverse
+                        kinematics, mechanical and software integration.
+                    </p>
+                    <p>
+                        This project let me work closer to the controls and
+                        robotics-mechanics side of things. It is another
+                        example of how I like work where math actually has
+                        to
+                        become behavior in a physical system.
+                    </p>
+                    <ul>
+                        <li>Implemented inverse-kinematic systems for a
+                            robotic
+                            arm and used them to improve efficiency.</li>
+                        <li>Worked with proportional-integral-derivative
+                            control
+                            ideas inside a ROS 2 workflow.</li>
+                    </ul>
+                </article>
+
+                <article class="project-entry">
+                    <h3>1.5. FIRST Robotics Competition, Team 589</h3>
+                    <p class="project-meta">
+                        <strong>Stack.</strong> Java, WPILib, Arduino, REV
+                        Robotics, National Instruments, localization,
+                        autonomous
+                        systems.
+                    </p>
+                    <p>
+                        This is where a lot of my software identity got
+                        built. I
+                        was leading students, writing code, fixing
+                        problems at competitions, and learning how to make
+                        autonomous and teleoperated systems work under
+                        pressure.
+                    </p>
+                    <ul>
+                        <li>Led the software subsystem for a team of 15
+                            students
+                            and taught runtime concepts, troubleshooting,
+                            and
+                            error handling.</li>
+                        <li>Wrote more than 12,000 lines of Java across two
+                            years for autonomous and teleoperated robot
+                            behavior.</li>
+                        <li>Integrated Arduino, REV Robotics, and National
+                            Instruments hardware with WPILib.</li>
+                        <li>Improved autonomous performance through
+                            real-time
+                            localization.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section id="profile">
+                <h2>2. technical profile</h2>
+                <p>
+                    My working strengths are robotics software, numerical
+                    computing, technical writing, and Unix-based
+                    development.
+                </p>
+                <ul>
+                    <li><strong>Languages.</strong> Python, C++, Java,
+                        MATLAB,
+                        and growing familiarity with Rust.</li>
+                    <li><strong>Robotics.</strong> ROS 2, Gazebo, OpenCV,
+                        localization, launch workflows, and
+                        controls-oriented
+                        work.</li>
+                    <li><strong>Systems.</strong> Linux development
+                        environments, Docker, deployment-minded debugging,
+                        and
+                        infrastructure setup.</li>
+                    <!-- <li><strong>Communication.</strong> Technical writing, teaching, documentation, and presentation work.</li> -->
+                </ul>
+            </section>
+
+            <section id="teaching">
+                <h2>3. teaching and mentoring</h2>
+
+                <article class="project-entry">
+                    <h3>3.1. Crescenta Valley Tech Team</h3>
+                    <p class="project-meta">
+                        <strong>Dates.</strong> Aug 2018 - Jun 2024
+                    </p>
+                    <ul>
+                        <li>Maintained education technology across 60+
+                            classrooms and 5 computer labs.</li>
+                        <li>Installed and maintained IoT devices, printers,
+                            projectors, laptops, and Cisco network
+                            infrastructure.</li>
+                        <li>Raised $4.5k in grants from GUSD and CTE.</li>
+                    </ul>
+                </article>
+
+                <article class="project-entry">
+                    <h3>3.2. National Technical Honor Society</h3>
+                    <p class="project-meta">
+                        <strong>Dates.</strong> Aug 2021 - Dec 2024
+                    </p>
+                    <p>
+                        This is some of the earliest work that made me care
+                        about teaching. It was hands-on, local, and not
+                        overdesigned, which honestly made it better.
+                    </p>
+                    <ul>
+                        <li>Ran after-school sessions on TinkerCAD, coding
+                            fundamentals, laptop dissection, and GSuite fun
+                            for
+                            neighboring elementary school students.</li>
+                        <li>Used hands-on activities instead of just
+                            explanations so students could touch the
+                            ideas.</li>
+                    </ul>
+                </article>
+
+                <article class="project-entry">
+                    <h3>3.3. FIRST Lego League Mentoring</h3>
+                    <p class="project-meta">
+                        <strong>Dates.</strong> Aug 2022 - Dec 2023
+                    </p>
+                    <p>
+                        Before fully diving into FRC, I spent time mentoring
+                        FIRST Lego League teams and helping support
+                        robotics for neighboring elementary schools.
+                    </p>
+                </article>
+
+                <article class="project-entry">
+                    <h3>3.4. Castilleja School</h3>
+                    <p class="project-meta">
+                        <strong>Dates.</strong> May 2025 - Sep 2025
+                    </p>
+                    <ul>
+                        <li>Co-authored an honors ai and machine learning
+                            curriculum.</li>
+                        <li>Built interactive labs around TensorFlow
+                            Playground,
+                            Teachable Machine, and scikit-learn.</li>
+                    </ul>
+                </article>
+
+                <article class="project-entry">
+                    <h3>3.5. M.S. 131, Sun Yat Sen Middle School</h3>
+                    <p class="project-meta">
+                        <strong>Dates.</strong> Feb 2026 - Current
+                    </p>
+                    <ul>
+                        <li>Work as a teaching assistant for accelerated
+                            algebra
+                            in New York City.</li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+    </body>
+
+</html>

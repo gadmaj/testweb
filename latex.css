@@ -67,6 +67,10 @@ ul {
 	list-style: disc;
 }
 
+.nav-list {
+	list-style: none;
+}
+
 
 body {
 	max-width: auto;
@@ -179,7 +183,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	overflow: hidden;
+	/* overflow: hidden; */
 	/* prevent page scrollbars */
 }
 
@@ -197,4 +201,187 @@ body {
 
 .center-1by3>* {
 	font-size: clamp(14px, 2.2vh, 20px);
+}
+
+body.portfolio-body {
+	display: block;
+	min-height: 100vh;
+	height: auto;
+	overflow: auto;
+	padding: 2.5rem 1rem 4rem;
+}
+
+.document-shell {
+	max-width: 860px;
+	margin: 0 auto;
+	font-size: 1rem;
+	line-height: 1.55;
+}
+
+.document-shell h1 {
+	margin-bottom: 0.2rem;
+}
+
+.document-subtitle,
+.document-nav {
+	text-align: center;
+}
+
+.document-subtitle {
+	margin-top: 0;
+	margin-bottom: 0.6rem;
+	font-style: italic;
+}
+
+.document-nav {
+	margin-top: 0;
+	margin-bottom: 1.8rem;
+}
+
+.document-nav span {
+	margin: 0 0.45rem;
+}
+
+.document-shell section {
+	margin-top: 1.75rem;
+}
+
+.document-shell h2 {
+	margin-bottom: 0.6rem;
+}
+
+.document-shell h3 {
+	margin-bottom: 0.35rem;
+}
+
+.contents {
+	margin-top: 1.25rem;
+}
+
+.contents h2 {
+	margin-bottom: 0.35rem;
+}
+
+.contents ol {
+	margin-top: 0.2rem;
+}
+
+.document-shell ul {
+	list-style: none;
+	padding-left: 1.1rem;
+}
+
+.document-shell ul li {
+	position: relative;
+}
+
+.document-shell ul li::before {
+	content: "\00b7";
+	position: absolute;
+	left: -0.95rem;
+}
+
+.abstract {
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	padding: 0.85rem 0;
+}
+
+.abstract h2 {
+	margin-top: 0;
+}
+
+.project-entry {
+	margin-top: 1.4rem;
+}
+
+.project-meta {
+	margin-top: 0;
+}
+
+.fig-figure {
+	margin: 1rem auto 1.5rem;
+}
+
+.fig-box {
+	border: 1px solid #000;
+	/* min-height: 220px; */
+	height: fit-content;
+	padding: 1rem;
+	/* height: clamp(320px, 42rem, 70vh); */
+	/* min-height: 320px; */
+	display: block;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: #fafafa;
+}
+
+.fig-figure figcaption {
+	margin-top: 0.45rem;
+	font-size: 0.95rem;
+	text-align: center;
+	font-style: italic;
+}
+
+/* .figure-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+	margin: 1rem 0 0.75rem;
+}
+
+.figure-card {
+	margin: 0;
+}
+
+.figure-card img {
+	height: 300px;
+	width: 300px;
+	/* align-self: center; */
+/* border: 1px solid #000;
+	background: #fafafa; 
+} */
+
+.figure-card figcaption {
+	margin-top: 0.45rem;
+	font-size: 0.95rem;
+	text-align: center;
+	font-style: italic;
+}
+
+.portfolio-model-viewer {
+	display: block;
+	width: 100%;
+	height: clamp(320px, 42rem, 70vh);
+	min-height: 320px;
+	/* border: 1px solid #000; */
+	background: #fafafa;
+}
+
+/* .figure-note {
+	margin-top: 0.35rem;
+	font-size: 0.97rem;
+} */
+
+.redirect-shell {
+	text-align: center;
+}
+
+@media (max-width: 700px) {
+	body.portfolio-body {
+		padding: 1.25rem 0.9rem 2.5rem;
+	}
+
+	.document-shell {
+		font-size: 0.98rem;
+	}
+
+	.fig-box {
+		min-height: 160px;
+	}
+
+	/* .figure-grid {
+		grid-template-columns: 1fr;
+	} */
 }
