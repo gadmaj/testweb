@@ -7,12 +7,13 @@
         <link rel="icon" href="../gm.png">
         <title>gadmaj.org/portfolio</title>
         <link rel="stylesheet" href="../latex.css" />
+        <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
         <script type="module"
             src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
 
     </head>
 
-    <body class="portfolio-body">
+    <body class="portfolio-body" style= "max-width: 200ch;">
         <main class="document-shell">
             <h1><a href="." class>gadmaj.org/portfolio</a></h1>
             <p class="author">Gad Major</p>
@@ -23,7 +24,7 @@
                 <span>&middot;</span>
                 <a href="mailto:glm8883@nyu.edu">email</a>
                 <span>&middot;</span>
-                <a href="https://github.com/gadmaj" target="_blank"
+                <a href="https://github.com/gadresumemaj" target="_blank"
                     rel="noreferrer">github</a>
                 <span>&middot;</span>
                 <a href="https://www.linkedin.com/in/gad-major/" target="_blank"
@@ -33,112 +34,129 @@
             <section class="contents">
                 <h2>contents</h2>
                 <ul class="nav-list">
-                    <li><a href="#abstract">abstract</a></li>
+                    <li><a href="#abstract">about</a></li>
                     <li><a href="#projects">highlighted projects</a></li>
                     <li><a href="#teaching">teaching & mentoring</a></li>
                 </ul>
             </section>
 
-            <section id="abstract" class="abstract">
-                <h2>i. abstract</h2>
+            <!-- <section id="abstract" class="abstract"> -->
+                <h2 id="abstract">about</h2>
                 <p>
                     I am a mathematics student at New York University building
-                    software for robotics,
-                    numerical methods, and Unix-based engineering workflows.
-                    This page is structurfed like a short technical document so
-                    I
-                    can
-                    show the work clearly and attach figures, screenshots, and
-                    diagrams as the projects are documented.
+                    software for robotics, numerical methods, and Unix-based
+                    engineering workflows. This page is structured like a short
+                    technical document so I can show the work clearly and attach
+                    figures, screenshots, and diagrams as the projects are
+                    documented.
                 </p>
-            </section>
+            <!-- </section> -->
 
             <section id="projects">
-                <h2>1. projects</h2>
+                <h2>projects</h2>
 
                 <article class="project-entry">
-                    <h3>1.1. Autonomy and Localization, NYU Robotics Design
-                        Team, NASA Lunabotics</h3>
+                    <h3>Newton and gradient methods on surface functions</h3>
                     <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2, Python, C++, OpenCV,
-                        Linux, Docker
+                        <strong>Stack.</strong> MATLAB, optimization,
+                        numerical analysis, multivariable calculus,
+                        visualization
                     </p>
                     <p>
-                        This is the strongest engineering work I have right now.
-                        The project lives inside
-                        a team rover stack and includes autonomy, localization,
-                        perception, launchability,
-                        Linux systems work, and the integration work that makes
-                        the whole thing usable
-                        instead of just impressive on paper.
+                        This project came out of my numerical analysis work at
+                        NYU. I derived the Rosenbrock gradient and Hessian by
+                        hand, implemented both Newton's method and gradient
+                        descent in MATLAB, and then exported the resulting
+                        trajectories as interactive 3D models for the portfolio.
+                        It is a good example of the kind of work I like:
+                        mathematics, algorithm design, numerical behavior, and
+                        visualization all tied together in one place.
                     </p>
                     <ul>
-                        <li>Worked in a multi-package ROS 2 workspace spanning
-                            autonomy, localization, command handling, and
-                            interfaces.</li>
-                        <li>Contributed to camera and AprilTag-related
-                            localization workflows.</li>
-                        <li>Built a headless Ubuntu 24.04 image for the Jetson
-                            Orin Nano and tuned the footprint to cut bloat,
-                            latency, and swap overhead.</li>
-                        <li>Integrated a Docker-based ROS 2 wrapper so
-                            rover-side software was more controlled and
-                            reproducible.</li>
-                        <li>Helped tighten rover-to-ground-control traffic and
-                            packet flow.</li>
-                        <li>I also help with the marketing and presentation side
-                            of RDT so the work can actually be shown and
-                            explained.</li>
+                        <li>Derived the Rosenbrock gradient and Hessian by hand
+                            and implemented both directly in MATLAB.</li>
+                        <li>Implemented Newton updates using a linear solve
+                            rather than explicitly forming the inverse
+                            Hessian.</li>
+                        <li>Compared second-order Newton iterations against
+                            fixed-step gradient descent on the same narrow,
+                            curved optimization valley.</li>
+                        <li>Extended the plotting/export code so large
+                            off-screen Newton excursions still expand the
+                            rendered surface instead of clipping the path.</li>
                     </ul>
-                    <figure class="fig-figure">
-                        <div class="fig-box">Insert rover autonomy
-                            figure, RViz screenshot, team slide, or system
-                            diagram here.</div>
-                        <figcaption>Figure 1. Good place for autonomy stack,
-                            localization view, or a slide used for
-                            RDT.</figcaption>
-                    </figure>
-                </article>
 
-                <article class="project-entry">
-                    <h3>1.2. Ground Control, Manual Command Bridging, and Gazebo
-                        Simulation</h3>
-                    <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2 + Gazebo, Python, Linux,
-                        Docker
-                    </p>
+                    <div class="math-block">
+                        <div class="math-line"><code>&nabla;f(x,y)</code> =
+                            <code>[2(x-1) - 400x(y-x^2),
+                                200(y-x^2)]</code></div>
+                        <div class="matrix-row">
+                            <span class="matrix-label"><code>Hf(x,y)</code>
+                                =</span>
+                            <span class="matrix-wrap"
+                                aria-label="Hessian matrix">
+                                <span class="matrix-bracket">[</span>
+                                <span class="matrix-grid">
+                                    <span><code>2 - 400y + 1200x^2</code></span>
+                                    <span><code>-400x</code></span>
+                                    <span><code>-400x</code></span>
+                                    <span><code>200</code></span>
+                                </span>
+                                <span class="matrix-bracket">]</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Initial guess</th>
+                                <th>Observed behavior</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Newton</td>
+                                <td><code>(-1.9, 2.2)</code></td>
+                                <td>Converged to <code>(1, 1)</code> in 5 steps,
+                                    but only after a large bounce through
+                                    <code>(0.94056, -7.126)</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>Newton</td>
+                                <td><code>(0.5, 1.8)</code></td>
+                                <td>Converged to <code>(1, 1)</code> in 4 steps
+                                    with a much shorter path.</td>
+                            </tr>
+                            <tr>
+                                <td>Gradient descent<br><code>&eta; =
+                                        10<sup>-3</sup></code></td>
+                                <td><code>(0.5, 1.8)</code></td>
+                                <td>Did not converge within 98 steps and stalled
+                                    near <code>(1.1343, 1.2872)</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>Gradient descent<br><code>&eta; =
+                                        10<sup>-3</sup></code></td>
+                                <td><code>(-1.9, 2.2)</code></td>
+                                <td>Did not converge within 98 steps and stalled
+                                    near <code>(-1.3976, 1.9608)</code>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                     <p>
-                        This is the side of the work that makes the rover easier
-                        to test and easier to drive. It is less glamorous
-                        than autonomy, but it is closer to what real systems
-                        work feels like: command paths, simulation setup,
-                        launch files, and debugging how pieces talk to each
-                        other.
-                    </p>
-                    <figure class="fig-figure">
-                        <div class="fig-box">Insert arena screenshot,
-                            control-flow figure, joystick diagram, or Gazebo
-                            world view here.</div>
-                        <figcaption>Figure 2. Good place for the arena, control
-                            bridge, or a message-flow sketch.</figcaption>
-                    </figure>
-
-                </article>
-
-                <article class="project-entry">
-                    <h3>1.3. Newton and gradient methods on the Rosenbrock
-                        surface</h3>
-                    <p class="project-meta">
-                        <strong>Stack.</strong> MATLAB
-                    </p>
-                    <p>
-                        In numerical analysis work, I implemented experiments
-                        around Newton's method, gradient-based updates, and
-                        visualization for nonlinear surfaces in two variables.
-                        This is the kind of math-to-code work I want in the
-                        portfolio because it shows gradients, Hessians,
-                        convergence behavior, failure cases, and visual
-                        explanation in the same place.
+                        The main conclusion from the assignment was that
+                        Newton's
+                        method converged quickly from both starting points, but
+                        its iterates could jump dramatically before settling
+                        into the valley. Gradient descent was much more local
+                        and visually intuitive, but with a fixed step size of
+                        <code>10<sup>-3</sup></code> it failed to reach the
+                        minimizer from either starting point within the
+                        iteration
+                        budget.
                     </p>
                     <div class="rosenbrock-layout">
                         <div class="figure-grid rosenbrock-grid">
@@ -160,7 +178,7 @@
                                         touch-action="pan-y">
                                     </model-viewer>
                                 </div>
-                                <figcaption>Figure 4. Newton method from
+                                <figcaption>Newton method from
                                     <code>x_0 = (-1.9, 2.2)</code>, including
                                     the
                                     large off-screen excursion before
@@ -185,7 +203,7 @@
                                         touch-action="pan-y">
                                     </model-viewer>
                                 </div>
-                                <figcaption>Figure 5. Newton method from
+                                <figcaption>Newton method from
                                     <code>x_0 = (0.5, 1.8)</code>, showing the
                                     much
                                     shorter path to the minimizer.</figcaption>
@@ -209,7 +227,7 @@
                                         touch-action="pan-y">
                                     </model-viewer>
                                 </div>
-                                <figcaption>Figure 6. Gradient descent from
+                                <figcaption>Gradient descent from
                                     <code>x_0 = (-1.9, 2.2)</code> with
                                     <code>\eta = 10^{-3}</code>, showing slow
                                     progress along the valley.</figcaption>
@@ -233,7 +251,7 @@
                                         touch-action="pan-y">
                                     </model-viewer>
                                 </div>
-                                <figcaption>Figure 7. Gradient descent from
+                                <figcaption>Gradient descent from
                                     <code>x_0 = (0.5, 1.8)</code> with the same
                                     step size, illustrating the non-converged
                                     trajectory from the homework.</figcaption>
@@ -293,7 +311,90 @@
                 </article>
 
                 <article class="project-entry">
-                    <h3>1.4. Bronco Space / Project BILL-EE</h3>
+                    <h3>NYU Robotics Design Team / NASA Lunabotics</h3>
+                    <p class="project-meta">
+                        <strong>Stack.</strong> ROS 2, Python, C++, Linux,
+                        Docker, Gazebo, OpenCV
+                    </p>
+                    <p>
+                        My RDT work breaks into two closely related subprojects:
+                        rover-side autonomy/localization and operator-side
+                        control/simulation. I treat them separately because they
+                        exercise different engineering muscles, but they live in
+                        the same systems context.
+                    </p>
+                </article>
+
+                <article class="project-entry" style="max-width: 150ch;">
+                    <h3>Autonomy and Localization</h3>
+                    <p class="project-meta">
+                        <strong>Stack.</strong> ROS 2, Python, C++, OpenCV,
+                        Linux, Docker
+                    </p>
+                    <p>
+                        This is the strongest engineering work I have right now.
+                        The project lives inside
+                        a team rover stack and includes autonomy, localization,
+                        perception, launchability,
+                        Linux systems work, and the integration work that makes
+                        the whole thing usable
+                        instead of just impressive on paper.
+                    </p>
+                    <ul>
+                        <li>Worked in a multi-package ROS 2 workspace spanning
+                            autonomy, localization, command handling, and
+                            interfaces.</li>
+                        <li>Contributed to camera and AprilTag-related
+                            localization workflows.</li>
+                        <li>Built a headless Ubuntu 24.04 image for the Jetson
+                            Orin Nano and tuned the footprint to cut bloat,
+                            latency, and swap overhead.</li>
+                        <li>Integrated a Docker-based ROS 2 wrapper so
+                            rover-side software was more controlled and
+                            reproducible.</li>
+                        <li>Helped tighten rover-to-ground-control traffic and
+                            packet flow.</li>
+                        <li>I also help with the marketing and presentation side
+                            of RDT so the work can actually be shown and
+                            explained.</li>
+                    </ul>
+                    <figure class="fig-figure">
+                        <div class="fig-box">Insert rover autonomy
+                            figure, RViz screenshot, team slide, or system
+                            diagram here.</div>
+                        <figcaption>Good place for autonomy stack,
+                            localization view, or a slide used for
+                            RDT.</figcaption>
+                    </figure>
+                </article>
+
+                <article class="project-entry" style="max-width: 150ch;">
+                    <h3>Ground Control, Manual Command Bridging, and Gazebo
+                        Simulation</h3>
+                    <p class="project-meta">
+                        <strong>Stack.</strong> ROS 2 + Gazebo, Python, Linux,
+                        Docker
+                    </p>
+                    <p>
+                        This is the side of the work that makes the rover easier
+                        to test and easier to drive. It is less glamorous
+                        than autonomy, but it is closer to what real systems
+                        work feels like: command paths, simulation setup,
+                        launch files, and debugging how pieces talk to each
+                        other.
+                    </p>
+                    <figure class="fig-figure">
+                        <div class="fig-box">Insert arena screenshot,
+                            control-flow figure, joystick diagram, or Gazebo
+                            world view here.</div>
+                        <figcaption>Good place for the arena, control
+                            bridge, or a message-flow sketch.</figcaption>
+                    </figure>
+
+                </article>
+
+                <article class="project-entry">
+                    <h3>Bronco Space / Project BILL-EE</h3>
                     <p class="project-meta">
                         <strong>Stack.</strong> ROS 2, Python, C++, Linux,
                         Docker
@@ -314,7 +415,6 @@
                             ideas inside a ROS 2 workflow.</li>
                     </ul>
 
-
                     <figure class="fig-figure">
                         <div class="fig-box">
                             <img src="../assets/billee/IMG_7744.jpg"
@@ -322,12 +422,14 @@
                                 class="portfolio-model-viewer"
                                 style="object-fit: contain; width: 50%; height: 50%;">
                         </div>
-                        <figcaption>Figure 8. Photo of me and Sam Ly (Lead Software Eng. '24) transporting the rover to our testing site</figcaption>
+                        <figcaption>Photo of me and Sam Ly (Lead
+                            Software Eng. '24) transporting the rover to our
+                            testing site</figcaption>
                     </figure>
                 </article>
 
-                <article class="project-entry">
-                    <h3>1.5. FIRST Robotics Competition, Team 589</h3>
+                <!-- <article class="project-entry">
+                    <h3>FIRST Robotics Competition, Team 589</h3>
                     <p class="project-meta">
                         <strong>Stack.</strong> Java, WPILib, Arduino, REV
                         Robotics, National Instruments, LimeLight, Photonvision
@@ -354,33 +456,35 @@
                         <li>Improved autonomous performance through
                             real-time
                             localization.</li>
-                    </ul>
-                </article>
+                    </ul> -->
+                </article> 
             </section>
 
             <section id="teaching">
-                <h2>2. teaching & mentoring</h2s>
+                <h2>teaching & mentoring</h2>
+                <p class="document-subtitle">*currently work in progress</p>
 
-                <h3>Crescenta Valley High School Tech Team</h3>
+
+                <h4>Crescenta Valley High School Tech Team</h4>
                 <p class="project-meta">
-                    Chief Executive Officier<small>Aug 2021 - Jun 2024</small>
+                    <strong>Dates.</strong> Aug 2021 - Jun 2024</small>
                 </p>
 
-                <h3>National Technical Honor Society</h3>
+                <h4>National Technical Honor Society</h4>
                 <p class="project-meta">
                     <strong>Dates.</strong> Aug 2021 - Dec 2024
                 </p>
 
-                <h3>FIRST Lego League Mentoring</h3>
+                <h4>FIRST Lego League Mentoring</h4 >
                 <p class="project-meta">
                     <strong>Dates.</strong> Aug 2022 - Dec 2023
                 </p>
 
-                <h3>Castilleja School</h3>
+                <h4>Castilleja School</h4>
                 <p class="project-meta">
                     <strong>Dates.</strong> May 2025 - Sep 2025
                 </p>
-                <h3>M.S. 131, Sun Yat Sen Middle School</h3>
+                <h4>M.S. 131, Sun Yat Sen Middle School</h4>
                 <p class="project-meta">
                     <strong>Dates.</strong> Feb 2026 - Current
                 </p>
