@@ -192,8 +192,9 @@ body.portfolio-body {
 	/* display: block; */
 	min-height: 100vh;
 	height: auto;
-	overflow: auto;
+	overflow: visible;
 	padding: 2.5rem 1rem 0rem;
+	
 }
 
 .document-shell {
@@ -503,6 +504,8 @@ body.portfolio-body {
 @media (max-width: 700px) {
 	body.portfolio-body {
 		padding: 1.25rem 0.9rem 2.5rem;
+		width: fit-content;
+		font-size: larger;
 	}
 
 	.document-shell {
