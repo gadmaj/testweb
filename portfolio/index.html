@@ -1,434 +1,475 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="icon" href="../gm.png">
-        <title>gadmaj.org/portfolio</title>
-        <link rel="stylesheet" href="../latex.css" />
-        <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
-        <script type="module"
-            src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="../gm.png">
+    <title>gadmaj.org/portfolio</title>
+    <link rel="stylesheet" href="../latex.css" />
+    <link rel="stylesheet" href="https://latex.vercel.app/style.min.css" />
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    </head>
+</head>
 
-    <body class="portfolio-body" style= "max-width: 200ch;">
-        <main class="document-shell">
-            <h1><a href="." class>gadmaj.org/portfolio</a></h1>
-            <p class="author">Gad Major</p>
-            <p class="document-subtitle">*currently work in progress</p>
+<body class="portfolio-body" style="max-width: 200ch;">
+    <main class="document-shell">
+        <h1><a href="." class>gadmaj.org/portfolio</a></h1>
+        <p class="author">Gad Major</p>
+        <p class="document-subtitle">*currently work in progress</p>
 
-            <p class="document-nav">
-                <a href="../">gadmaj.org</a>
-                <span>&middot;</span>
-                <a href="mailto:glm8883@nyu.edu">email</a>
-                <span>&middot;</span>
-                <a href="https://github.com/gadresumemaj" target="_blank"
-                    rel="noreferrer">github</a>
-                <span>&middot;</span>
-                <a href="https://www.linkedin.com/in/gad-major/" target="_blank"
-                    rel="noreferrer">linkedin</a>
-            </p>
+        <p class="document-nav">
+            <a href="../">gadmaj.org</a>
+            <span>&middot;</span>
+            <a href="mailto:glm8883@nyu.edu">email</a>
+            <span>&middot;</span>
+            <a href="https://github.com/gadresumemaj" target="_blank" rel="noreferrer">github</a>
+            <span>&middot;</span>
+            <a href="https://www.linkedin.com/in/gad-major/" target="_blank" rel="noreferrer">linkedin</a>
+        </p>
 
-            <section class="contents">
-                <h2>contents</h2>
-                <ul class="nav-list">
-                    <li><a href="#abstract">about</a></li>
-                    <li><a href="#projects">highlighted projects</a></li>
-                    <li><a href="#teaching">teaching & mentoring</a></li>
-                </ul>
-            </section>
+        <section class="contents">
+            <h2>contents</h2>
+            <ul class="nav-list">
+                <li><a href="#about">about</a></li>
+                <li><a href="#projects">projects</a></li>
+                <li><a href="#teaching">teaching & mentoring</a></li>
 
-            <!-- <section id="abstract" class="abstract"> -->
-                <h2 id="abstract">about</h2>
-                <p>
-                    I am a mathematics student at New York University building
-                    software for robotics, numerical methods, and Unix-based
-                    engineering workflows. This page is structured like a short
-                    technical document so I can show the work clearly and attach
-                    figures, screenshots, and diagrams as the projects are
-                    documented.
+            </ul>
+
+        </section>
+
+        <!-- <section id="abstract" class="abstract"> -->
+        <h2 id="about">about</h2>
+        <figure class="about-photo">
+            <img src="../assets/etc/IMG_0058.JPG"
+                alt="Me and my friend Joshua Sohn in Tuolumne Meadows starting our Yosemite backpacking trip.">
+            <figcaption>Me (right) and my friend Joshua Sohn (left) in Tuolumne Meadows
+                starting our yosemite backpacking trip June 25'</figcaption>
+        </figure>
+        <p>
+            I am a mathematics student at New York University building
+            software for robotics, numerical methods, and Unix-based
+            engineering workflows. This page is structured like a short
+            technical document so I can show the work clearly and attach
+            figures, screenshots, and diagrams as the projects are
+            documented.
+        </p>
+        <p>
+            I am currently redesigning this page, so the content is a
+            work in progress. I will be adding more projects, writing
+            more about the work, and improving the formatting over the
+            next few weeks.
+        </p>
+        <section id="projects">
+            <h2>projects</h2>
+
+            <article class="project-entry">
+                <h3>Newton's method on \(C^2\) surface functions</h3>
+                <p class="project-meta">
+                    <strong>Stack.</strong> MATLAB
                 </p>
-            <!-- </section> -->
+                <p>
+                    This started as a question on my numerical analysis homework, but then it quickly became a tangent
+                    project for me while I further explored MATLAB's capiablities.
 
-            <section id="projects">
-                <h2>projects</h2>
+                    The general setup is an open set \(U \subseteq \mathbb{R}^2\),
+                    a twice differentiable function \(f : U \to \mathbb{R}\),
+                    and an initial point \(x_0 \in U\). From there we can build
+                    the orbit \(\{x_k\}_{k \in \mathbb{N}}\) and graph how
+                    the iterates move across the surface.
+                </p>
+                <div class="definition">
+                    for \(f \in C^2(U)\), the Newton method applied to this function at step \(k\) is
+                    \[
+                    x_{k+1}
+                    =
+                    x_k - \bigl(\nabla^2 f(x_k)\bigr)^{-1}\nabla f(x_k),
+                    \]
+                    whenever \(\nabla^2 f(x_k)\) is invertible. in the code,
+                    the iterate set is the sequence
+                    \(\{x_k\}_{k \in \mathbb{N}} \subseteq U\).
+                </div>
+                <div class="definition">
+                    for a general \(f : U \to \mathbb{R}\) with
+                    \(U \subseteq \mathbb{R}^2\),
+                    \[
+                    \nabla f(x,y)
+                    =
+                    \begin{bmatrix}
+                    \frac{\partial f}{\partial x}(x,y) \\
+                    \frac{\partial f}{\partial y}(x,y)
+                    \end{bmatrix},
+                    \qquad
+                    \nabla^2 f(x,y)
+                    =
+                    \begin{bmatrix}
+                    \frac{\partial^2 f}{\partial x^2}(x,y) &
+                    \frac{\partial^2 f}{\partial x \partial y}(x,y) \\
+                    \frac{\partial^2 f}{\partial y \partial x}(x,y) &
+                    \frac{\partial^2 f}{\partial y^2}(x,y)
+                    \end{bmatrix}.
+                    \]
+                </div>
+                <p>
+                    Now if we have a function that is twice differentiable, and we
+                    can evaluate \(f\), \(\nabla f\), and \(\nabla^2 f\),
+                    then we can generate the Newton path, compare it against
+                    another update rule, and render the trajectory directly
+                    on the graph of the function. Rosenbrock is just the
+                    best test case because the valley geometry makes the
+                    behavior easy to see.
+                </p>
+                <ul>
+                    <li>Derived \(\nabla f\) and \(\nabla^2 f\) for the
+                        rosenbrock example and implemented both directly in
+                        MATLAB.</li>
+                    <li>Treated the iterates as a sequence
+                        \(\{x_k\}_{k \in \mathbb{N}}\) and recorded the full
+                        orbit, not just the endpoint.</li>
+                    <li>Implemented the Newton step with a linear solve
+                        instead of explicitly forming
+                        \(\bigl(\nabla^2 f(x_k)\bigr)^{-1}\).</li>
+                    <li>Compared second-order Newton updates with
+                        fixed-step gradient descent on the same function and
+                        exported both trajectories as 3d models.</li>
+                    <li>Extended the plotting/export code so large Newton
+                        excursions still enlarge the plotted domain instead
+                        of clipping off the path.</li>
+                </ul>
+                <p>
+                    for the rosenbrock test surface
+                    \[
+                    f(x,y) = (1-x)^2 + 100(y-x^2)^2,
+                    \]
+                    the derivatives become
+                    \[
+                    \nabla f(x,y)
+                    =
+                    \begin{bmatrix}
+                    2(x-1) - 400x(y-x^2) \\
+                    200(y-x^2)
+                    \end{bmatrix},
+                    \qquad
+                    \nabla^2 f(x,y)
+                    =
+                    \begin{bmatrix}
+                    2 - 400y + 1200x^2 & -400x \\
+                    -400x & 200
+                    \end{bmatrix}.
+                    \]
+                </p>
+                <div class="theorem">
+                    If \(x^\ast\) is a nondegenerate critical point of
+                    \(f\), meaning \(\nabla f(x^\ast)=0\) and
+                    \(\det(\nabla^2 f(x^\ast)) \neq 0\), then Newton's
+                    method is locally a second-order method near
+                    \(x^\ast\). that is the mathematical reason it can look
+                    so aggressive and still converge very quickly once it
+                    gets into the right neighborhood.
+                </div>
 
-                <article class="project-entry">
-                    <h3>Newton and gradient methods on surface functions</h3>
-                    <p class="project-meta">
-                        <strong>Stack.</strong> MATLAB, optimization,
-                        numerical analysis, multivariable calculus,
-                        visualization
-                    </p>
-                    <p>
-                        This project came out of my numerical analysis work at
-                        NYU. I derived the Rosenbrock gradient and Hessian by
-                        hand, implemented both Newton's method and gradient
-                        descent in MATLAB, and then exported the resulting
-                        trajectories as interactive 3D models for the portfolio.
-                        It is a good example of the kind of work I like:
-                        mathematics, algorithm design, numerical behavior, and
-                        visualization all tied together in one place.
-                    </p>
-                    <ul>
-                        <li>Derived the Rosenbrock gradient and Hessian by hand
-                            and implemented both directly in MATLAB.</li>
-                        <li>Implemented Newton updates using a linear solve
-                            rather than explicitly forming the inverse
-                            Hessian.</li>
-                        <li>Compared second-order Newton iterations against
-                            fixed-step gradient descent on the same narrow,
-                            curved optimization valley.</li>
-                        <li>Extended the plotting/export code so large
-                            off-screen Newton excursions still expand the
-                            rendered surface instead of clipping the path.</li>
-                    </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Initial guess</th>
+                            <th>Observed behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Newton</td>
+                            <td>\(x_0 = (-1.9, 2.2)\)</td>
+                            <td>converged to \((1,1)\) in 5 steps, but only
+                                after a big excursion through
+                                \((0.94056, -7.126)\).</td>
+                        </tr>
+                        <tr>
+                            <td>Newton</td>
+                            <td>\(x_0 = (0.5, 1.8)\)</td>
+                            <td>converged to \((1,1)\) in 4 steps with a
+                                much shorter path.</td>
+                        </tr>
+                        <tr>
+                            <td>gradient descent<br>\(\eta = 10^{-3}\)</td>
+                            <td>\(x_0 = (0.5, 1.8)\)</td>
+                            <td>did not converge within 98 steps and stalled
+                                near \((1.1343, 1.2872)\).</td>
+                        </tr>
+                        <tr>
+                            <td>gradient descent<br>\(\eta = 10^{-3}\)</td>
+                            <td>\(x_0 = (-1.9, 2.2)\)</td>
+                            <td>did not converge within 98 steps and stalled
+                                near \((-1.3976, 1.9608)\).</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <div class="math-block">
-                        <div class="math-line"><code>&nabla;f(x,y)</code> =
-                            <code>[2(x-1) - 400x(y-x^2),
-                                200(y-x^2)]</code></div>
-                        <div class="matrix-row">
-                            <span class="matrix-label"><code>Hf(x,y)</code>
-                                =</span>
-                            <span class="matrix-wrap"
-                                aria-label="Hessian matrix">
-                                <span class="matrix-bracket">[</span>
-                                <span class="matrix-grid">
-                                    <span><code>2 - 400y + 1200x^2</code></span>
-                                    <span><code>-400x</code></span>
-                                    <span><code>-400x</code></span>
-                                    <span><code>200</code></span>
-                                </span>
-                                <span class="matrix-bracket">]</span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Method</th>
-                                <th>Initial guess</th>
-                                <th>Observed behavior</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Newton</td>
-                                <td><code>(-1.9, 2.2)</code></td>
-                                <td>Converged to <code>(1, 1)</code> in 5 steps,
-                                    but only after a large bounce through
-                                    <code>(0.94056, -7.126)</code>.</td>
-                            </tr>
-                            <tr>
-                                <td>Newton</td>
-                                <td><code>(0.5, 1.8)</code></td>
-                                <td>Converged to <code>(1, 1)</code> in 4 steps
-                                    with a much shorter path.</td>
-                            </tr>
-                            <tr>
-                                <td>Gradient descent<br><code>&eta; =
-                                        10<sup>-3</sup></code></td>
-                                <td><code>(0.5, 1.8)</code></td>
-                                <td>Did not converge within 98 steps and stalled
-                                    near <code>(1.1343, 1.2872)</code>.</td>
-                            </tr>
-                            <tr>
-                                <td>Gradient descent<br><code>&eta; =
-                                        10<sup>-3</sup></code></td>
-                                <td><code>(-1.9, 2.2)</code></td>
-                                <td>Did not converge within 98 steps and stalled
-                                    near <code>(-1.3976, 1.9608)</code>.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p>
-                        The main conclusion from the assignment was that
-                        Newton's
-                        method converged quickly from both starting points, but
-                        its iterates could jump dramatically before settling
-                        into the valley. Gradient descent was much more local
-                        and visually intuitive, but with a fixed step size of
-                        <code>10<sup>-3</sup></code> it failed to reach the
-                        minimizer from either starting point within the
-                        iteration
-                        budget.
-                    </p>
-                    <div class="rosenbrock-layout">
-                        <div class="figure-grid rosenbrock-grid">
-                            <figure class="figure-card">
-                                <div class="fig-box">
-                                    <model-viewer
-                                        class="portfolio-model-viewer rosenbrock-viewer"
-                                        id="rosenbrock-newton-a"
-                                        camera-orbit="45deg 55deg 100000m"
-                                        interpolation-decay="100"
-                                        interaction-prompt="none"
-                                        tone-mapping="neutral"
-                                        exposure="0.7"
-                                        shadow-intensity=".55"
-                                        shadow-softness="0.9"
-                                        alt="Newton method on the Rosenbrock surface starting at (-1.9, 2.2)."
-                                        src="../assets/numerical/hw1_newton_x0_neg1p9_2p2.glb"
-                                        ar camera-controls
-                                        touch-action="pan-y">
-                                    </model-viewer>
-                                </div>
-                                <figcaption>Newton method from
-                                    <code>x_0 = (-1.9, 2.2)</code>, including
-                                    the
-                                    large off-screen excursion before
-                                    convergence.</figcaption>
-                            </figure>
-
-                            <figure class="figure-card">
-                                <div class="fig-box">
-                                    <model-viewer
-                                        class="portfolio-model-viewer rosenbrock-viewer"
-                                        id="rosenbrock-newton-b"
-                                        camera-orbit="45deg 55deg 100000m"
-                                        interpolation-decay="100"
-                                        interaction-prompt="none"
-                                        tone-mapping="neutral"
-                                        exposure="0.82"
-                                        shadow-intensity=".55"
-                                        shadow-softness="0.9"
-                                        alt="Newton method on the Rosenbrock surface starting at (0.5, 1.8)."
-                                        src="../assets/numerical/hw1_newton_x0_0p5_1p8.glb"
-                                        ar camera-controls
-                                        touch-action="pan-y">
-                                    </model-viewer>
-                                </div>
-                                <figcaption>Newton method from
-                                    <code>x_0 = (0.5, 1.8)</code>, showing the
-                                    much
-                                    shorter path to the minimizer.</figcaption>
-                            </figure>
-
-                            <figure class="figure-card">
-                                <div class="fig-box">
-                                    <model-viewer
-                                        class="portfolio-model-viewer rosenbrock-viewer"
-                                        id="rosenbrock-gd-a"
-                                        interpolation-decay="100"
-                                        camera-orbit="45deg 55deg 100000m"
-                                        interaction-prompt="none"
-                                        tone-mapping="neutral"
-                                        exposure="0.82"
-                                        shadow-intensity=".55"
-                                        shadow-softness="0.9"
-                                        alt="Gradient descent on the Rosenbrock surface starting at (-1.9, 2.2)."
-                                        src="../assets/numerical/hw1_grad_desc_x0_neg1p9_2p2.glb"
-                                        ar camera-controls
-                                        touch-action="pan-y">
-                                    </model-viewer>
-                                </div>
-                                <figcaption>Gradient descent from
-                                    <code>x_0 = (-1.9, 2.2)</code> with
-                                    <code>\eta = 10^{-3}</code>, showing slow
-                                    progress along the valley.</figcaption>
-                            </figure>
-
-                            <figure class="figure-card">
-                                <div class="fig-box">
-                                    <model-viewer
-                                        class="portfolio-model-viewer rosenbrock-viewer"
-                                        id="rosenbrock-gd-b"
-                                        interpolation-decay="100"
-                                        camera-orbit="45deg 55deg 100000m"
-                                        interaction-prompt="none"
-                                        tone-mapping="neutral"
-                                        exposure="0.82"
-                                        shadow-intensity=".55"
-                                        shadow-softness="0.9"
-                                        alt="Gradient descent on the Rosenbrock surface starting at (0.5, 1.8)."
-                                        src="../assets/numerical/hw1_grad_desc_x0_0p5_1p8.glb"
-                                        ar camera-controls
-                                        touch-action="pan-y">
-                                    </model-viewer>
-                                </div>
-                                <figcaption>Gradient descent from
-                                    <code>x_0 = (0.5, 1.8)</code> with the same
-                                    step size, illustrating the non-converged
-                                    trajectory from the homework.</figcaption>
-                            </figure>
-                        </div>
-
-                        <aside class="rosenbrock-key"
-                            aria-labelledby="rosenbrock-key-title">
-                            <!-- <h4 id="rosenbrock-key-title"></h4> -->
-                            <div class="rosenbrock-key-body">
-                                <div class="rosenbrock-colorbar"
-                                    aria-hidden="true"></div>
-                                <div class="rosenbrock-key-labels">
-                                    <span><code>f(x,y) ≈ 10e4</code></span>
-                                    <span><code>f(x,y) ≈ 10e2</code></span>
-                                    <span><code>f(x,y) ≈ 10e-1</code></span>
-                                </div>
+                <p>
+                    The main thing I liked here is that the surfaces functions help visualize the behavior of the
+                    algorithms in a
+                    way that really match the theory. Newton's method is not “smooth” in the
+                    visual sense; it can jump hard because it is reading
+                    curvature information from the Hessian. gradient descent
+                    is easier to follow step by step, but with
+                    \(\eta = 10^{-3}\) it stayed slow and local on the same
+                    surface. this made the project feel less like an
+                    isolated homework problem and more like a small numerical
+                    lab for comparing update rules on the same set
+                    \(U \subseteq \mathbb{R}^2\).
+                </p>
+                <div class="rosenbrock-layout">
+                    <div class="figure-grid rosenbrock-grid">
+                        <figure class="figure-card">
+                            <div class="fig-box">
+                                <model-viewer class="portfolio-model-viewer rosenbrock-viewer" id="rosenbrock-newton-a"
+                                    camera-orbit="45deg 55deg 100000m" interpolation-decay="100"
+                                    interaction-prompt="none" tone-mapping="neutral" exposure="0.7"
+                                    shadow-intensity=".55" shadow-softness="0.9"
+                                    alt="Newton method on the Rosenbrock surface starting at (-1.9, 2.2)."
+                                    src="../assets/numerical/hw1_newton_x0_neg1p9_2p2.glb" ar camera-controls
+                                    touch-action="pan-y">
+                                </model-viewer>
                             </div>
-                            <p class="rosenbrock-key-note">
-                                This uses the same MATLAB <code>turbo</code>
-                                color map as the exported surface figures.
-                                Purple is lower and orange-red is higher.
-                            </p>
-                        </aside>
+                            <figcaption>Newton method from
+                                <code>x_0 = (-1.9, 2.2)</code>, including
+                                the
+                                large off-screen excursion before
+                                convergence.
+                            </figcaption>
+                        </figure>
+
+                        <figure class="figure-card">
+                            <div class="fig-box">
+                                <model-viewer class="portfolio-model-viewer rosenbrock-viewer" id="rosenbrock-newton-b"
+                                    camera-orbit="45deg 55deg 100000m" interpolation-decay="100"
+                                    interaction-prompt="none" tone-mapping="neutral" exposure="0.82"
+                                    shadow-intensity=".55" shadow-softness="0.9"
+                                    alt="Newton method on the Rosenbrock surface starting at (0.5, 1.8)."
+                                    src="../assets/numerical/hw1_newton_x0_0p5_1p8.glb" ar camera-controls
+                                    touch-action="pan-y">
+                                </model-viewer>
+                            </div>
+                            <figcaption>Newton method from
+                                <code>x_0 = (0.5, 1.8)</code>, showing the
+                                much
+                                shorter path to the minimizer.
+                            </figcaption>
+                        </figure>
+
+                        <figure class="figure-card">
+                            <div class="fig-box">
+                                <model-viewer class="portfolio-model-viewer rosenbrock-viewer" id="rosenbrock-gd-a"
+                                    interpolation-decay="100" camera-orbit="45deg 55deg 100000m"
+                                    interaction-prompt="none" tone-mapping="neutral" exposure="0.82"
+                                    shadow-intensity=".55" shadow-softness="0.9"
+                                    alt="Gradient descent on the Rosenbrock surface starting at (-1.9, 2.2)."
+                                    src="../assets/numerical/hw1_grad_desc_x0_neg1p9_2p2.glb" ar camera-controls
+                                    touch-action="pan-y">
+                                </model-viewer>
+                            </div>
+                            <figcaption>Gradient descent from
+                                <code>x_0 = (-1.9, 2.2)</code> showing slow
+                                progress along the valley.
+                            </figcaption>
+                        </figure>
+
+                        <figure class="figure-card">
+                            <div class="fig-box">
+                                <model-viewer class="portfolio-model-viewer rosenbrock-viewer" id="rosenbrock-gd-b"
+                                    interpolation-decay="100" camera-orbit="45deg 55deg 100000m"
+                                    interaction-prompt="none" tone-mapping="neutral" exposure="0.82"
+                                    shadow-intensity=".55" shadow-softness="0.9"
+                                    alt="Gradient descent on the Rosenbrock surface starting at (0.5, 1.8)."
+                                    src="../assets/numerical/hw1_grad_desc_x0_0p5_1p8.glb" ar camera-controls
+                                    touch-action="pan-y">
+                                </model-viewer>
+                            </div>
+                            <figcaption>Gradient descent from
+                                <code>x_0 = (0.5, 1.8)</code> with the same
+                                step size, illustrating the non-converged
+                                trajectory from the homework.
+                            </figcaption>
+                        </figure>
                     </div>
 
-                    <script>
-                        document.querySelectorAll("model-viewer.rosenbrock-viewer").forEach((viewer) => {
-                            const x = { value: 2.5 };
-                            const y = { value: .2 };
-                            const z = { value: 2.5 };
-                            viewer.scale = `${x.value} ${y.value} ${z.value}`;
-                            // viewer.querySelector('color-grade-viewer')
-                            const orbitCycle = [
-                                '45deg 55deg 100000m',
-                                '-45deg 55deg 200000m',
-                                '45deg 55deg 100000m',
+                    <aside class="rosenbrock-key" aria-labelledby="rosenbrock-key-title">
+                        <!-- <h4 id="rosenbrock-key-title"></h4> -->
+                        <div class="rosenbrock-key-body">
+                            <div class="rosenbrock-colorbar" aria-hidden="true"></div>
+                            <div class="rosenbrock-key-labels">
+                                <span><code>f(x,y) ≈ 10e4</code></span>
+                                <span><code>f(x,y) ≈ 10e2</code></span>
+                                <span><code>f(x,y) ≈ 10e-1</code></span>
+                            </div>
+                        </div>
+                        <p class="rosenbrock-key-note">
+                            This uses the general MATLAB <code>turbo</code>
+                            color map
+                        </p>
+                    </aside>
+                </div>
 
-                                viewer.cameraOrbit
-                            ];      
-                            const orbitTimer = setInterval(() => {
-                                const currentOrbitIndex = orbitCycle.indexOf(viewer.cameraOrbit);
-                                viewer.cameraOrbit =
-                                    orbitCycle[(currentOrbitIndex + 1) % orbitCycle.length];
-                            }, 10000);
+                <script>
+                    document.querySelectorAll("model-viewer.rosenbrock-viewer").forEach((viewer) => {
+                        const x = { value: 2.5 };
+                        const y = { value: .2 };
+                        const z = { value: 2.5 };
+                        viewer.scale = `${x.value} ${y.value} ${z.value}`;
+                        // viewer.querySelector('color-grade-viewer')
+                        const orbitCycle = [
+                            '45deg 55deg 100000m',
+                            '-45deg 55deg 200000m',
+                            '45deg 55deg 100000m',
 
-                            const stopOrbitOnInteraction = (event) => {
-                                if (event.detail && event.detail.source === 'user-interaction') {
-                                    clearInterval(orbitTimer);
-                                    viewer.removeEventListener('camera-change', stopOrbitOnInteraction);
-                                }
-                            };
+                            viewer.cameraOrbit
+                        ];
+                        const orbitTimer = setInterval(() => {
+                            const currentOrbitIndex = orbitCycle.indexOf(viewer.cameraOrbit);
+                            viewer.cameraOrbit =
+                                orbitCycle[(currentOrbitIndex + 1) % orbitCycle.length];
+                        }, 10000);
 
-                            viewer.addEventListener('camera-change', stopOrbitOnInteraction);
-                        });
-                    </script>
-                </article>
+                        const stopOrbitOnInteraction = (event) => {
+                            if (event.detail && event.detail.source === 'user-interaction') {
+                                clearInterval(orbitTimer);
+                                viewer.removeEventListener('camera-change', stopOrbitOnInteraction);
+                            }
+                        };
 
-                <article class="project-entry">
-                    <h3>NYU Robotics Design Team / NASA Lunabotics</h3>
-                    <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2, Python, C++, Linux,
-                        Docker, Gazebo, OpenCV
-                    </p>
-                    <p>
-                        My RDT work breaks into two closely related subprojects:
-                        rover-side autonomy/localization and operator-side
-                        control/simulation. I treat them separately because they
-                        exercise different engineering muscles, but they live in
-                        the same systems context.
-                    </p>
-                </article>
+                        viewer.addEventListener('camera-change', stopOrbitOnInteraction);
+                    });
+                </script>
+            </article>
 
-                <article class="project-entry" style="max-width: 150ch;">
-                    <h3>Autonomy and Localization</h3>
-                    <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2, Python, C++, OpenCV,
-                        Linux, Docker
-                    </p>
-                    <p>
-                        This is the strongest engineering work I have right now.
-                        The project lives inside
-                        a team rover stack and includes autonomy, localization,
-                        perception, launchability,
-                        Linux systems work, and the integration work that makes
-                        the whole thing usable
-                        instead of just impressive on paper.
-                    </p>
-                    <ul>
-                        <li>Worked in a multi-package ROS 2 workspace spanning
-                            autonomy, localization, command handling, and
-                            interfaces.</li>
-                        <li>Contributed to camera and AprilTag-related
-                            localization workflows.</li>
-                        <li>Built a headless Ubuntu 24.04 image for the Jetson
-                            Orin Nano and tuned the footprint to cut bloat,
-                            latency, and swap overhead.</li>
-                        <li>Integrated a Docker-based ROS 2 wrapper so
-                            rover-side software was more controlled and
-                            reproducible.</li>
-                        <li>Helped tighten rover-to-ground-control traffic and
-                            packet flow.</li>
-                        <li>I also help with the marketing and presentation side
-                            of RDT so the work can actually be shown and
-                            explained.</li>
-                    </ul>
-                    <figure class="fig-figure">
+
+            <!-- rdt -->
+            <article class="project-entry">
+                <h3>NYU Robotics Design Team / NASA Lunabotics</h3>
+                <p class="project-meta">
+                    <strong>Stack.</strong> ROS 2, Python, C++, Linux,
+                    Docker, Gazebo, OpenCV
+                </p>
+                <p>
+                    My RDT work breaks into two closely related subprojects:
+                    rover-side autonomy/localization and operator-side
+                    control/simulation. I treat them separately because they
+                    exercise different engineering muscles, but they live in
+                    the same systems context.
+                </p>
+                <center style="text-align: left;">
+                    <article class="project-entry" style="max-width: 80ch; justify-self: center;">
+
+                        <h3>Autonomy and Localization</h3>
+                        <p class="project-meta">
+                            <!-- <strong>Stack.</strong> ROS 2, Python, C++, OpenCV,
+                        Linux, Docker -->
+                        </p>
+                        <p>
+                            This is the strongest engineering work I have right now.
+                            The project lives inside
+                            a team rover stack and includes autonomy, localization,
+                            perception, launchability,
+                            Linux systems work, and the integration work that makes
+                            the whole thing usable
+                            instead of just impressive on paper.
+                        </p>
+                        <ul>
+                            <li>Worked in a multi-package ROS 2 workspace spanning
+                                autonomy, localization, command handling, and
+                                interfaces.</li>
+                            <li>Contributed to camera and AprilTag-related
+                                localization workflows.</li>
+                            <li>Built a headless Ubuntu 24.04 image for the Jetson
+                                Orin Nano and tuned the footprint to cut bloat,
+                                latency, and swap overhead.</li>
+                            <li>Integrated a Docker-based ROS 2 wrapper so
+                                rover-side software was more controlled and
+                                reproducible.</li>
+                            <li>Helped tighten rover-to-ground-control traffic and
+                                packet flow.</li>
+                        </ul>
+                        <!-- <figure class="fig-figure">
                         <div class="fig-box">Insert rover autonomy
                             figure, RViz screenshot, team slide, or system
                             diagram here.</div>
                         <figcaption>Good place for autonomy stack,
                             localization view, or a slide used for
                             RDT.</figcaption>
-                    </figure>
-                </article>
+                    </figure> -->
+                        </subproject>
 
-                <article class="project-entry" style="max-width: 150ch;">
-                    <h3>Ground Control, Manual Command Bridging, and Gazebo
-                        Simulation</h3>
-                    <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2 + Gazebo, Python, Linux,
-                        Docker
-                    </p>
-                    <p>
-                        This is the side of the work that makes the rover easier
-                        to test and easier to drive. It is less glamorous
-                        than autonomy, but it is closer to what real systems
-                        work feels like: command paths, simulation setup,
-                        launch files, and debugging how pieces talk to each
-                        other.
-                    </p>
-                    <figure class="fig-figure">
+                        <article class="project-entry" style="max-width: 80ch; justify-self: center;">
+                            <h3>Ground Control, Manual Command Bridging, and Gazebo
+                                Simulation</h3>
+                            <p class="project-meta">
+                                <!-- <strong>Stack.</strong> ROS 2 + Gazebo, Python, Linux,
+                        Docker -->
+                            </p>
+                            <p>
+                                This is the side of the work that makes the rover easier
+                                to test and easier to drive. It is less glamorous
+                                than autonomy, but it is closer to what real systems
+                                work feels like: command paths, simulation setup,
+                                launch files, and debugging how pieces talk to each
+                                other.
+                            </p>
+                            <!-- <figure class="fig-figure">
                         <div class="fig-box">Insert arena screenshot,
                             control-flow figure, joystick diagram, or Gazebo
                             world view here.</div>
                         <figcaption>Good place for the arena, control
                             bridge, or a message-flow sketch.</figcaption>
-                    </figure>
+                    </figure> -->
 
-                </article>
+                        </article>
 
-                <article class="project-entry">
-                    <h3>Bronco Space / Project BILL-EE</h3>
-                    <p class="project-meta">
-                        <strong>Stack.</strong> ROS 2, Python, C++, Linux,
-                        Docker
-                    </p>
-                    <p>
-                        This project let me work closer to the controls and
-                        robotics-mechanics side of things. It is another
-                        example of how I like work where math actually has
-                        to
-                        become behavior in a physical system.
-                    </p>
-                    <ul>
-                        <li>Implemented inverse-kinematic systems for a
-                            robotic
-                            arm and used them to improve efficiency.</li>
-                        <li>Worked with proportional-integral-derivative
-                            control
-                            ideas inside a ROS 2 workflow.</li>
-                    </ul>
+                </center>
 
+            </article>
+
+
+            <!-- cpp billee -->
+
+            <article class="project-entry">
+                <h3>Bronco Space / Project BILL-EE</h3>
+                <p class="project-meta">
+                    <strong>Stack.</strong> ROS 2, Python, C++, Linux,
+                    Docker
+                </p>
+                <p>
+                    This project let me work closer to the controls and
+                    robotics-mechanics side of things. It is another
+                    example of how I like work where math actually has
+                    to
+                    become behavior in a physical system.
+                </p>
+                <ul>
+                    <li>Implemented inverse-kinematic systems for a
+                        robotic
+                        arm and used them to improve efficiency.</li>
+                    <li>Worked with proportional-integral-derivative
+                        control
+                        ideas inside a ROS 2 workflow.</li>
+                </ul>
+                <center>
                     <figure class="fig-figure">
-                        <div class="fig-box">
-                            <img src="../assets/billee/IMG_7744.jpg"
-                                alt="Project BILL-EE, a robotic arm built by Bronco Space for satellite servicing and debris removal."
-                                class="portfolio-model-viewer"
-                                style="object-fit: contain; width: 50%; height: 50%;">
-                        </div>
-                        <figcaption>Photo of me and Sam Ly (Lead
-                            Software Eng. '24) transporting the rover to our
-                            testing site</figcaption>
-                    </figure>
-                </article>
+                    <div class="fig-box">
+                        <img src="../assets/billee/IMG_7744.jpg"
+                            alt="Project BILL-EE, a robotic arm built by Bronco Space for satellite servicing and debris removal."
+                            style="height: 36vh;">
+                    </div>
+                    <figcaption>Photo of me and Sam Ly (Lead
+                        Software Eng. '24) transporting the rover to our
+                        testing site</figcaption>
+                </figure>
+                </center>
+                
+            </article>
 
-                <!-- <article class="project-entry">
+            <!-- <article class="project-entry">
                     <h3>FIRST Robotics Competition, Team 589</h3>
                     <p class="project-meta">
                         <strong>Stack.</strong> Java, WPILib, Arduino, REV
@@ -457,39 +498,39 @@
                             real-time
                             localization.</li>
                     </ul> -->
-                </article> 
-            </section>
+            </article>
+        </section>
 
-            <section id="teaching">
-                <h2>teaching & mentoring</h2>
-                <p class="document-subtitle">*currently work in progress</p>
+        <section id="teaching">
+            <h2>teaching & mentoring</h2>
+            <p class="document-subtitle">*currently work in progress</p>
 
 
-                <h4>Crescenta Valley High School Tech Team</h4>
-                <p class="project-meta">
-                    <strong>Dates.</strong> Aug 2021 - Jun 2024</small>
-                </p>
+            <h4>Crescenta Valley High School Tech Team</h4>
+            <p class="project-meta">
+                <strong>Dates.</strong> Aug 2021 - Jun 2024</small>
+            </p>
 
-                <h4>National Technical Honor Society</h4>
-                <p class="project-meta">
-                    <strong>Dates.</strong> Aug 2021 - Dec 2024
-                </p>
+            <h4>National Technical Honor Society</h4>
+            <p class="project-meta">
+                <strong>Dates.</strong> Aug 2021 - Dec 2024
+            </p>
 
-                <h4>FIRST Lego League Mentoring</h4 >
-                <p class="project-meta">
-                    <strong>Dates.</strong> Aug 2022 - Dec 2023
-                </p>
+            <h4>FIRST Lego League Mentoring</h4>
+            <p class="project-meta">
+                <strong>Dates.</strong> Aug 2022 - Dec 2023
+            </p>
 
-                <h4>Castilleja School</h4>
-                <p class="project-meta">
-                    <strong>Dates.</strong> May 2025 - Sep 2025
-                </p>
-                <h4>M.S. 131, Sun Yat Sen Middle School</h4>
-                <p class="project-meta">
-                    <strong>Dates.</strong> Feb 2026 - Current
-                </p>
-            </section>
-        </main>
-    </body>
+            <h4>Castilleja School</h4>
+            <p class="project-meta">
+                <strong>Dates.</strong> May 2025 - Sep 2025
+            </p>
+            <h4>M.S. 131, Sun Yat Sen Middle School</h4>
+            <p class="project-meta">
+                <strong>Dates.</strong> Feb 2026 - Current
+            </p>
+        </section>
+    </main>
+</body>
 
 </html>
