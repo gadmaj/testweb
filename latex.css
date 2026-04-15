@@ -37,15 +37,40 @@ shout out
 
 
 body {
-	/* scale: 100%; */
-	background-color: white;
+	background-color: #fff;
+	font-family: 'Latin Modern Roman', serif;
 	font-size: 13pt;
+	text-align: justify;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	counter-reset: theorem definition;
 }
 
+html,
 body {
-	font-family: 'Latin Modern Roman', serif;
-	counter-reset: theorem;
-	counter-reset: definition;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body.home-body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+body.portfolio-body {
+	display: block;
+	min-height: 100vh;
+	max-width: 200ch;
+	margin: 0 auto;
+	padding: 2.5rem 1rem 0;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
 }
 
 h1,
@@ -67,46 +92,32 @@ ul {
 	list-style: disc;
 }
 
-.nav-list {
-	list-style: none;
-}
-
-
-body {
-	max-width: auto;
-	margin: auto;
-}
-
 h1:first-of-type {
-	text-align: center;
 	display: block;
-}
-
-
-body {
-	text-align: justify;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	hyphens: auto;
-	/* padding: 0 1em; */
+	text-align: center;
 }
 
 dl dd {
 	text-align: center;
 }
 
-@media (min-width: 43.75em) {
-	body {
-		padding: 0;
-	}
+.center-1by3 {
+	width: min(100%, 40rem);
+	padding: 1rem;
 }
 
-
-.theorem {
-	counter-increment: theorem;
+.theorem,
+.lemma,
+.proof,
+.definition {
 	display: block;
 	margin: 12px 0;
+}
+
+.theorem,
+.lemma {
 	font-style: italic;
+	counter-increment: theorem;
 }
 
 .theorem:before {
@@ -115,22 +126,9 @@ dl dd {
 	font-style: normal;
 }
 
-.lemma {
-	counter-increment: theorem;
-	display: block;
-	margin: 12px 0;
-	font-style: italic;
-}
-
 .lemma:before {
 	content: "Lemma " counter(theorem) ".";
 	font-weight: bold;
-	font-style: normal;
-}
-
-.proof {
-	display: block;
-	margin: 12px 0;
 	font-style: normal;
 }
 
@@ -146,8 +144,6 @@ dl dd {
 
 .definition {
 	counter-increment: definition;
-	display: block;
-	margin: 12px 0;
 	font-style: normal;
 }
 
@@ -167,34 +163,9 @@ dl dd {
 .subtext {
 	display: block;
 	margin: 12px 0;
-	font-style: italic;
 	font-size: 8px;
+	font-style: italic;
 	text-align: center;
-}
-
-html,
-body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	/* overflow: hidden; */
-	/* prevent page scrollbars */
-}
-
-
-body.portfolio-body {
-	/* display: block; */
-	min-height: 100vh;
-	height: auto;
-	overflow: visible;
-	padding: 2.5rem 1rem 0rem;
-	
 }
 
 .document-shell {
@@ -209,12 +180,17 @@ body.portfolio-body {
 	margin-bottom: 0.2rem;
 }
 
+.document-shell h1 a {
+	display: inline-block;
+	max-width: 100%;
+	white-space: normal;
+	word-break: break-word;
+	overflow-wrap: anywhere;
+}
+
 .document-subtitle,
 .document-nav {
 	text-align: center;
-	/* border-top: 1px solid #000;
-	border-bottom: 1px solid #000; */
-	/* padding: 0.85rem 0; */
 }
 
 .document-subtitle {
@@ -252,10 +228,7 @@ body.portfolio-body {
 	margin-bottom: 0.35rem;
 }
 
-.contents ol {
-	margin-top: 0.2rem;
-}
-
+.nav-list,
 .document-shell ul {
 	list-style: none;
 	padding-left: 1.1rem;
@@ -271,6 +244,12 @@ body.portfolio-body {
 	left: -0.95rem;
 }
 
+.document-shell table {
+	display: block;
+	max-width: 100%;
+	overflow-x: auto;
+}
+
 .abstract {
 	border-top: 1px solid #000;
 	border-bottom: 1px solid #000;
@@ -281,69 +260,56 @@ body.portfolio-body {
 	margin-top: 0;
 }
 
-.project-entry {
-	/* margin-top: 1.4rem; */
-	/* border-top: 1px solid #000; */
-	/* border-bottom: 1px solid #000; */
-	/* padding: 0.85rem 0; */
-
-}
-
-.project-entry subproject{
-	max-width: 80ch;
-    justify-self: center;
-}
 .project-meta {
 	margin-top: 0;
 }
 
-.fig-figure {
+.subproject-group {
+	text-align: left;
+}
+
+.subproject-entry {
+	width: 100%;
+	max-width: 80ch;
+	margin: 0 auto;
+}
+
+.fig-figure,
+.figure-card {
 	margin: 1rem auto 1.5rem;
-	justify-content: center;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
 }
 
-/* .fig-box {
-	border: 1px solid #000;
-	/* min-height: 220px; */
-	/* height: fit-content; */
-	/* padding: 1rem; */
-	/* width:fit-content; */
-	/* max-width: 100%; */
-	/* border-top: 1px solid #000;
-	border-bottom: 1px solid #000; */
-	/* height: clamp(320px, 42rem, 70vh); 
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	background: #fafafa;
-} */
+.figure-card {
+	margin: 0;
+	overflow: hidden;
+}
 
 .fig-box {
-	border: 1px solid #000;
-	/* min-height: 220px; */
-	/* height: fit-content; */
-	/* padding: 1rem; */
-	width: fit-content;
-	/* max-width: 100%; */
-	/* border-top: 1px solid #000; */
-	/* border-bottom: 1px solid #000; */
-	/* height: clamp(320px, 42rem, 70vh); */
-	/* min-height: 320px; */
-	display: flex;
+	display: inline-flex;
+	max-width: 100%;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	border: 1px solid #000;
 	background: #fafafa;
+	overflow: hidden;
 }
 
-.fig-figure figcaption {
-	/* counter-increment: figcaption; */
+.fig-figure figcaption,
+.figure-card figcaption,
+.about-photo figcaption {
 	margin-top: 0.45rem;
 	font-size: 0.95rem;
 	text-align: center;
 	font-style: italic;
+}
+
+.fig-figure figcaption,
+.figure-card figcaption {
+	counter-increment: figcaption;
 }
 
 .fig-figure figcaption::before,
@@ -354,22 +320,8 @@ body.portfolio-body {
 .figure-grid {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	grid-template: auto;
 	gap: 1rem;
-	/* margin: 1rem 0 0.75rem; */
-}
-
-.figure-card {
-	margin: 0;
-	overflow: hidden;
-}
-
-.figure-card figcaption {
-	/* counter-increment: figcaption; */
-	margin-top: 0.45rem;
-	font-size: 0.95rem;
-	text-align: center;
-	font-style: italic;
+	align-items: start;
 }
 
 .about-photo {
@@ -385,71 +337,27 @@ body.portfolio-body {
 	border: 1px solid #000;
 }
 
-.about-photo figcaption {
-	margin-top: 0.45rem;
-	font-size: 0.95rem;
-	text-align: center;
-	font-style: italic;
-}
-
-.math-block {
-	margin: 1rem 0 1.1rem;
-	padding: 0.9rem 1rem;
-	border: 1px solid #000;
-	background: #fcfcfc;
-}
-
-.math-line {
-	margin-bottom: 0.75rem;
-}
-
-.matrix-row {
-	display: flex;
-	align-items: center;
-	gap: 0.75rem;
-	flex-wrap: wrap;
-}
-
-.matrix-wrap {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.45rem;
-}
-
-.matrix-bracket {
-	font-size: 2rem;
-	line-height: 1;
-}
-
-.matrix-grid {
-	display: grid;
-	grid-template-columns: repeat(2, auto);
-	gap: 0.35rem 1rem;
-	align-items: center;
-}
-
 .rosenbrock-layout {
-	display: grid;	
+	display: grid;
 	grid-template-columns: minmax(0, 1fr) 220px;
 	gap: 1.25rem;
 	align-items: start;
 }
 
 .rosenbrock-grid .fig-box {
-	/* padding: 0.75rem; */
-	width: max-content;
+	width: fit-content;
+	max-width: 100%;
 	justify-self: center;
 	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
 .rosenbrock-key {
-	/* border: 1px solid #000; */
+	position: sticky;
+	top: 1rem;
+	padding: 1rem 0.95rem;
 	border-top: 1px solid #000;
 	border-bottom: 1px solid #000;
 	background: #fafafa;
-	padding: 1rem 0.95rem;
-	position: sticky;
-	top: 1rem;
 }
 
 .rosenbrock-key h4 {
@@ -472,8 +380,8 @@ body.portfolio-body {
 }
 
 .rosenbrock-key-labels {
-	height: 320px;
 	display: flex;
+	height: 320px;
 	flex-direction: column;
 	justify-content: space-between;
 	font-size: 0.9rem;
@@ -485,37 +393,62 @@ body.portfolio-body {
 }
 
 .portfolio-model-viewer {
-	overflow: hidden;
-	justify-content: center;
-	/* display: block; */
+	display: block;
 	width: 300px;
 	height: 300px;
-	/* height: clamp(200px, 42rem, 70vh); */
-	/* min-height: 320px; */
-	/* background: radial-gradient(circle at 50% 42%, #fbfaf8 0%, #f2efe8 72%, #ebe6dc 100%); */
-	
+	max-width: min(300px, 100%);
+	flex: 0 0 auto;
 }
 
+.project-photo {
+	display: block;
+	height: 36vh;
+	width: auto;
+}
 
-.redirect-shell {
-	text-align: center;
+mjx-container {
+	max-width: 100%;
+}
+
+mjx-container[display="true"] {
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 @media (max-width: 700px) {
 	body.portfolio-body {
 		padding: 1.25rem 0.9rem 2.5rem;
-		width: fit-content;
-		font-size: larger;
 	}
 
 	.document-shell {
 		font-size: 0.98rem;
 	}
 
+	.document-shell h1 {
+		font-size: 1.5rem;
+		line-height: 1.1;
+	}
+
+	.about-photo {
+		float: none;
+		width: min(100%, 34ch);
+		margin: 0 auto 1rem;
+	}
+
+	.about-photo img {
+		width: 100%;
+	}
+
 	.fig-box {
 		min-height: 160px;
 	}
 
+	.portfolio-model-viewer {
+		width: min(300px, calc(100vw - 4rem));
+		height: min(300px, calc(100vw - 4rem));
+	}
+
+	.figure-grid,
 	.rosenbrock-layout {
 		grid-template-columns: 1fr;
 	}
@@ -524,13 +457,11 @@ body.portfolio-body {
 		position: static;
 	}
 
-	.figure-grid {
-		grid-template-columns: 1fr;
+	.project-photo {
+		max-width: 100%;
+		height: auto;
 	}
 }
-
-
-
 
 ::-webkit-scrollbar {
   width: 6px;
