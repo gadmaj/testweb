@@ -1,0 +1,22 @@
+name: Sync Scripts Subtree
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull latest scripts
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git subtree pull --prefix=scripts https://github.com/gadmaj/scripts.git main --squash -m "Auto-sync scripts subtree"
+          git push
