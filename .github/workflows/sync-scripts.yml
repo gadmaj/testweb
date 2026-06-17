@@ -5,6 +5,9 @@ on:
     - cron: '0 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write  # 👈 ADD THIS so it can push
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -12,11 +15,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # token line is optional — defaults to GITHUB_TOKEN
 
       - name: Pull latest scripts
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git subtree pull --prefix=scripts https://github.com/gadmaj/scripts.git main --squash -m "Auto-sync scripts subtree"
+          git subtree pull --prefix=scripts https://github.com/gadmaj/scripts.git main --squash -m "auto-sync"
           git push
