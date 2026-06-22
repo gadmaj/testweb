@@ -120,7 +120,6 @@ jobs:
 
       - name: commit ts
         run: |
-          # git config user.name "github-actions"
-          # git config user.email "actions@github.com"
-          git subtree pull --prefix=scripts https://github.com/gadmaj/scripts.git main --squash -m "auto-sync"
-          git push
+           git add scripts
+           git diff --cached --quiet || git commit -m "generate script viewer pages"
+           git push
