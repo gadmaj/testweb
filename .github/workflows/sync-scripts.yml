@@ -2,11 +2,11 @@ name: Sync Scripts Subtree
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 permissions:
-  contents: write  # 👈 ADD THIS so it can push
+  contents: write
 
 jobs:
   sync:
@@ -15,11 +15,112 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # token line is optional — defaults to GITHUB_TOKEN
-
       - name: Pull latest scripts
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          git subtree pull --prefix=scripts https://github.com/gadmaj/scripts.git main --squash -m "auto-sync"
+
+      - name: Generate script viewer pages
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import html
+
+          scripts_dir = Path("scripts")
+          script_exts = {
+              ".ps1", ".sh", ".bash", ".zsh", ".fish",
+              ".py", ".js", ".ts", ".rb", ".pl",
+              ".bat", ".cmd", ".lua"
+          }
+
+          files = [
+              p for p in scripts_dir.iterdir()
+              if p.is_file()
+              and p.suffix in script_exts
+              and not p.name.startswith(".")
+          ]
+
+          # scripts/index.html
+          items = "\n".join(
+              f'<li><a href="./{p.stem}/">{html.escape(p.stem)}</a> '
+              f'<span>&middot;</span> '
+              f'<a href="./{html.escape(p.name)}">raw</a></li>'
+              for p in sorted(files)
+          )
+
+          (scripts_dir / "index.html").write_text(f"""<!DOCTYPE html>
+          <html>
+          <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width,initial-scale=1">
+              <link rel="stylesheet" href="../latex.css">
+              <title>gadmaj.org/scripts</title>
+          </head>
+          <body>
+              <main>
+                  <h1><a href="../">gadmaj.org</a>/scripts</h1>
+                  <p>plain-text script viewer</p>
+                  <ul>
+                      {items}
+                  </ul>
+              </main>
+          </body>
+          </html>
+          """, encoding="utf-8")
+
+          # scripts/<script-name>/index.html
+          for p in files:
+              out_dir = scripts_dir / p.stem
+              out_dir.mkdir(exist_ok=True)
+
+              out_file = out_dir / "index.html"
+              raw_name = html.escape(p.name)
+              title = html.escape(p.stem)
+
+              out_file.write_text(f"""<!DOCTYPE html>
+          <html>
+          <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width,initial-scale=1">
+              <link rel="stylesheet" href="../../latex.css">
+              <title>gadmaj.org/scripts/{title}</title>
+          </head>
+          <body>
+              <main>
+                  <h1><a href="../">scripts</a>/{title}</h1>
+                  <p>
+                      <a href="../{raw_name}">raw</a>
+                      <span>&middot;</span>
+                      <a href="../../">home</a>
+                  </p>
+                  <pre><code id="script-source">loading...</code></pre>
+              </main>
+
+              <script>
+                  fetch("../{raw_name}")
+                      .then((response) => {{
+                          if (!response.ok) {{
+                              throw new Error(`${{response.status}} ${{response.statusText}}`);
+                          }}
+                          return response.text();
+                      }})
+                      .then((text) => {{
+                          document.getElementById("script-source").textContent = text;
+                      }})
+                      .catch((error) => {{
+                          document.getElementById("script-source").textContent =
+                              `Could not load script: ${{error.message}}`;
+                      }});
+              </script>
+          </body>
+          </html>
+          """, encoding="utf-8")
+          PY
+
+      - name: commit ts
+        run: |
+          # git config user.name "github-actions"
+          # git config user.email "actions@github.com"
           git subtree pull --prefix=scripts https://github.com/gadmaj/scripts.git main --squash -m "auto-sync"
           git push
