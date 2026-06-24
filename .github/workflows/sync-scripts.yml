@@ -115,19 +115,19 @@ jobs:
 
               <script>
                   fetch("../{raw_name}")
-                      .then((response) => {
-                          if (!response.ok) {
+                      .then((response) => {{
+                          if (!response.ok) {{
                               throw new Error(response.status + " " + response.statusText);
-                          }
+                          }}
                           return response.text();
-                      })
-                      .then((text) => {
+                      }})
+                      .then((text) => {{
                           document.getElementById("script-source").textContent = text;
-                      })
-                      .catch((error) => {
+                      }})
+                      .catch((error) => {{
                           document.getElementById("script-source").textContent =
                               "Could not load script: " + error.message;
-                      });
+                      }});
               </script>
           </body>
           </html>
