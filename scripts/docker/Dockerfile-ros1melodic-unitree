@@ -1,0 +1,57 @@
+FROM osrf/ros:melodic-desktop-full
+
+SHELL ["/bin/bash", "-lc"]
+
+#RUN apt-get update && apt-get install -y \
+#    git \
+#    curl \
+#    tmux \
+#    fish \ 
+#    python-catkin-tools \
+#    x11-apps \
+#    mesa-utils \
+#    ros-melodic-controller-interface \
+#    ros-melodic-gazebo-ros-control \
+#    ros-melodic-joint-state-controller \
+#    ros-melodic-effort-controllers \
+#    ros-melodic-joint-trajectory-controller \
+# && rm -rf /var/lib/apt/lists/*  
+ #&& curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
+
+
+
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    tmux \
+    software-properties-common \
+    python-catkin-tools \
+    x11-apps \
+    mesa-utils \
+    ros-melodic-controller-interface \
+    ros-melodic-gazebo-ros-control \
+    ros-melodic-joint-state-controller \
+    ros-melodic-effort-controllers \
+    ros-melodic-joint-trajectory-controller \
+ && apt-add-repository -y ppa:fish-shell/release-3 \
+ && apt-get update \
+ && apt-get install -y fish
+# && rm -rf /var/lib/apt/lists/*
+
+
+RUN fish -c "curl -sL https://git.io/fisher | source; and fisher install jorgebucaran/fisher"
+RUN fish -c "fisher install edc/bass; and echo "installed fisher" "
+RUN fish -c "bass source /opt/ros/melodic/setup.bash"
+
+#RUN fish -c "bass source /work/"
+CMD ["bash"]
+
+ARG USER_NAME=ros-user
+ARG USER_UID=1000
+ARG USER_GID=1000
+
+RUN groupadd --gid 1000 ros-user && \
+     useradd --uid 1000 --gid 1000 -m ros-user && \
+     echo "ros-user:yourpassword" | chpasswd
+USER $USER_NAME
