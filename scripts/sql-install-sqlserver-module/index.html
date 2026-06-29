@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../../latex.css">
+    <link rel="icon" href="../../gm.png">
+
+    <title>gadmaj.org/scripts/sql-install-sqlserver-module</title>
+</head>
+
+<body>
+    <main>
+        <h1> <a href="../../">gadmaj.org</a>/<a href="../">scripts</a>/sql-install-sqlserver-module</h1>
+        <p>
+            <a href="../../">../../</a>
+            <span>&middot;</span>
+            <a href="../">../</a>
+            <span>&middot;</span>
+            <a href="../sql-install-sqlserver-module.ps1">file</a>
+        </p>
+        <pre><code id="script-source">loading...</code></pre>
+    </main>
+
+    <script>
+        fetch("../sql-install-sqlserver-module.ps1")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(response.status + " " + response.statusText);
+                }
+                return response.text();
+            })
+            .then((text) => {
+                document.getElementById("script-source").textContent = text;
+            })
+            .catch((error) => {
+                document.getElementById("script-source").textContent =
+                    "Could not load script: " + error.message;
+            });
+    </script>
+</body>
+</html>
