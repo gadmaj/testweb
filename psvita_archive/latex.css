@@ -107,9 +107,23 @@ Only addition: the filename label under each photo.
 }
 
 .hero-cycle {
+    position: relative;
     width: min(90vw, 640px);
     height: 38vh;
+}
+
+.hero-cycle img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero-cycle img.visible {
+    opacity: 1;
 }
 
 .page-header {

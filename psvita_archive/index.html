@@ -30,7 +30,10 @@
                 <div class="title page-header"><span class="header-small">gadmaj.org</span>/psvita_archive</div>
             </center>
             <p class="hero-text">web application i built in 2023 for senior year of highschool</p>
-            <img class="hero-cycle" id="hero-cycle" alt="" decoding="async">
+            <div class="hero-cycle">
+                <img id="hero-a" alt="" decoding="async">
+                <img id="hero-b" alt="" decoding="async">
+            </div>
         </section>
         <div class="image-container" id="image-container"></div>
         <div id="scroll-sentinel"></div>
@@ -117,14 +120,21 @@
             "2024-02-23-132250.jpg",
             "2024-02-23-132253.jpg"
         ];
-        const heroImg = document.getElementById("hero-cycle");
+        HERO_PHOTOS.forEach(f => { new Image().src = `images/${f}`; });
+        const heroLayers = [document.getElementById("hero-a"), document.getElementById("hero-b")];
         let heroIndex = 0;
+        let heroFront = 0;
+        heroLayers[0].src = `images/${HERO_PHOTOS[0]}`;
+        heroLayers[0].classList.add("visible");
         function cycleHero() {
-            heroImg.src = `images/${HERO_PHOTOS[heroIndex]}`;
             heroIndex = (heroIndex + 1) % HERO_PHOTOS.length;
+            const back = heroLayers[1 - heroFront];
+            back.src = `images/${HERO_PHOTOS[heroIndex]}`;
+            back.classList.add("visible");
+            heroLayers[heroFront].classList.remove("visible");
+            heroFront = 1 - heroFront;
         }
-        cycleHero();
-        setInterval(cycleHero, 2500);
+        setInterval(cycleHero, 2000);
 
         function applyFilter() {
             const q = searchBox.value.trim();
