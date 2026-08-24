@@ -13,15 +13,49 @@
 
 <body class="app-body">
     <div class="app-container">
+        <nav class="nav-bar">
+            <a href="#" class="nav-title" id="nav-home">PSVITA/GAD</a>
+            <span class="nav-search">
+                <input type="text" id="date-search" list="date-list"
+                    placeholder="YYYY-MM-DD" inputmode="numeric"
+                    autocomplete="off" spellcheck="false">
+                <datalist id="date-list"></datalist>
+                <button type="button" id="date-clear" title="clear">&times;</button>
+            </span>
+            <span class="nav-count" id="nav-count"></span>
+        </nav>
+
         <center>
             <font class="title" size="+20">PSVITA/GAD TRACKER (WIP)</font>
         </center>
         <div class="image-container" id="image-container"></div>
+        <div id="scroll-sentinel"></div>
+        <div class="end-note" id="end-note" hidden>end of archive</div>
     </div>
 
     <script>
+        const BATCH = 24;
         const container = document.getElementById("image-container");
-        PHOTOS.slice().reverse().forEach((file) => {
+        const sentinel = document.getElementById("scroll-sentinel");
+        const endNote = document.getElementById("end-note");
+        const searchBox = document.getElementById("date-search");
+        const clearBtn = document.getElementById("date-clear");
+        const navCount = document.getElementById("nav-count");
+
+        const all = PHOTOS.slice().reverse(); // newest first, like the original
+        let filtered = all;
+        let rendered = 0;
+
+        // datalist of the dates that actually have photos
+        const dates = [...new Set(PHOTOS.map(f => f.slice(0, 10)))].sort().reverse();
+        const dateList = document.getElementById("date-list");
+        for (const d of dates) {
+            const opt = document.createElement("option");
+            opt.value = d;
+            dateList.appendChild(opt);
+        }
+
+        function makeCell(file) {
             const cell = document.createElement("div");
             cell.className = "image-cell";
 
@@ -37,9 +71,50 @@
             name.className = "image-name";
             name.textContent = file;
             cell.appendChild(name);
+            return cell;
+        }
 
-            container.appendChild(cell);
+        function renderMore() {
+            const next = filtered.slice(rendered, rendered + BATCH);
+            for (const file of next) container.appendChild(makeCell(file));
+            rendered += next.length;
+            endNote.hidden = rendered < filtered.length;
+            navCount.textContent = filtered.length === all.length
+                ? `${all.length}` : `${filtered.length}/${all.length}`;
+        }
+
+        function resetAndRender() {
+            container.textContent = "";
+            rendered = 0;
+            renderMore();
+        }
+
+        const io = new IntersectionObserver((entries) => {
+            if (entries.some(e => e.isIntersecting) && rendered < filtered.length) {
+                renderMore();
+            }
+        }, { rootMargin: "150% 0px" });
+        io.observe(sentinel);
+
+        function applyFilter() {
+            const q = searchBox.value.trim();
+            filtered = q ? all.filter(f => f.startsWith(q)) : all;
+            resetAndRender();
+        }
+
+        searchBox.addEventListener("input", applyFilter);
+        clearBtn.addEventListener("click", () => {
+            searchBox.value = "";
+            applyFilter();
         });
+        document.getElementById("nav-home").addEventListener("click", (e) => {
+            e.preventDefault();
+            searchBox.value = "";
+            applyFilter();
+            window.scrollTo({ top: 0 });
+        });
+
+        resetAndRender();
     </script>
 </body>
 
