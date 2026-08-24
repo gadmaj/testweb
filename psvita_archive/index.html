@@ -33,10 +33,6 @@
                 across <span id="photo-count"></span> photographs, shown
                 newest first, exactly as the original tracker displayed them.
             </p>
-            <p class="vote-note">
-                you may vote on the plates below &mdash; there is no backend,
-                so your ballots are stored in your browser only.
-            </p>
         </section>
 
         <div id="archive"></div>
@@ -49,18 +45,6 @@
     <a href="#" class="top-link" id="top-link">&uarr; top</a>
 
     <script>
-        const VOTE_KEY = "psvita_archive_votes";
-
-        function loadVotes() {
-            try { return JSON.parse(localStorage.getItem(VOTE_KEY)) || {}; }
-            catch (e) { return {}; }
-        }
-
-        function saveVotes(votes) {
-            try { localStorage.setItem(VOTE_KEY, JSON.stringify(votes)); }
-            catch (e) { /* private mode etc. — voting just won't persist */ }
-        }
-
         const MONTHS = ["january", "february", "march", "april", "may", "june",
             "july", "august", "september", "october", "november", "december"];
 
@@ -80,7 +64,6 @@
         let newestFirst = true;
 
         function render() {
-            const votes = loadVotes();
             const ordered = photos.slice().sort((a, b) =>
                 newestFirst ? b.file.localeCompare(a.file) : a.file.localeCompare(b.file));
 
@@ -135,7 +118,6 @@
                     time.className = "photo-time";
                     time.textContent = `${p.dayLabel} · ${p.time}`;
                     cap.appendChild(time);
-                    cap.appendChild(makeVoteRow(p.file, votes));
                     fig.appendChild(cap);
 
                     grid.appendChild(fig);
@@ -143,41 +125,6 @@
                 section.appendChild(grid);
                 archive.appendChild(section);
             }
-        }
-
-        function makeVoteRow(file, votes) {
-            const row = document.createElement("span");
-            row.className = "vote-row";
-            const state = votes[file] || 0;
-
-            const up = document.createElement("button");
-            up.className = "vote-btn" + (state === 1 ? " voted-up" : "");
-            up.textContent = `▲ ${state === 1 ? 1 : 0}`;
-            up.title = "upvote";
-
-            const down = document.createElement("button");
-            down.className = "vote-btn" + (state === -1 ? " voted-down" : "");
-            down.textContent = `▼ ${state === -1 ? 1 : 0}`;
-            down.title = "downvote";
-
-            function cast(dir) {
-                const v = loadVotes();
-                v[file] = (v[file] === dir) ? 0 : dir; // click again to un-vote
-                if (v[file] === 0) delete v[file];
-                saveVotes(v);
-                const s = v[file] || 0;
-                up.className = "vote-btn" + (s === 1 ? " voted-up" : "");
-                up.textContent = `▲ ${s === 1 ? 1 : 0}`;
-                down.className = "vote-btn" + (s === -1 ? " voted-down" : "");
-                down.textContent = `▼ ${s === -1 ? 1 : 0}`;
-            }
-
-            up.addEventListener("click", () => cast(1));
-            down.addEventListener("click", () => cast(-1));
-
-            row.appendChild(up);
-            row.appendChild(down);
-            return row;
         }
 
         // header stats

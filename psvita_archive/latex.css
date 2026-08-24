@@ -104,47 +104,6 @@ h1 a:visited {
 	font-size: 0.9rem;
 }
 
-.vote-row {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 0.6rem;
-	margin-top: 0.35rem;
-	font-style: normal;
-}
-
-.vote-btn {
-	font-family: inherit;
-	font-size: 0.9rem;
-	color: #fff;
-	background: #0a0a0a;
-	border: 1px solid #fff;
-	padding: 0.1rem 0.55rem;
-	cursor: pointer;
-	line-height: 1.4;
-}
-
-.vote-btn:hover {
-	background: #1c1c1c;
-}
-
-.vote-btn.voted-up {
-	background: #fff;
-	color: #000;
-}
-
-.vote-btn.voted-down {
-	background: #e05555;
-	border-color: #e05555;
-	color: #000;
-}
-
-.vote-note {
-	font-size: 0.8rem;
-	font-style: italic;
-	text-align: center;
-}
-
 .top-link {
 	position: fixed;
 	right: 1rem;
