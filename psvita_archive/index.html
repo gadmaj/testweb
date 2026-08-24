@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="../gm.png">
+    <title>gadmaj.org/psvita_archive</title>
+    <link rel="stylesheet" href="latex.css" />
+    <script src="photos.js"></script>
+</head>
+
+<body class="portfolio-body">
+    <main class="document-shell">
+        <h1><a href="." class>gadmaj.org/psvita_archive</a></h1>
+        <p class="author">Gad Major</p>
+        <p class="document-subtitle">formerly PSVITA/GAD TRACKER (WIP)</p>
+
+        <p class="document-nav">
+            <a href="../">gadmaj.org</a>
+            <span>&middot;</span>
+            <a href="#top" id="oldest-newest-toggle">oldest first</a>
+        </p>
+
+        <section class="abstract">
+            <h2>abstract</h2>
+            <p>
+                An exhibit of photographs taken on a Sony PlayStation Vita.
+                Each plate is dated and timed by the camera itself; the
+                filename is the timestamp. The collection runs from
+                <span id="range-start"></span> to <span id="range-end"></span>
+                across <span id="photo-count"></span> photographs, shown
+                newest first, exactly as the original tracker displayed them.
+            </p>
+            <p class="vote-note">
+                you may vote on the plates below &mdash; there is no backend,
+                so your ballots are stored in your browser only.
+            </p>
+        </section>
+
+        <div id="archive"></div>
+
+        <p class="document-nav">
+            <a href="../">gadmaj.org</a>
+        </p>
+    </main>
+
+    <a href="#" class="top-link" id="top-link">&uarr; top</a>
+
+    <script>
+        const VOTE_KEY = "psvita_archive_votes";
+
+        function loadVotes() {
+            try { return JSON.parse(localStorage.getItem(VOTE_KEY)) || {}; }
+            catch (e) { return {}; }
+        }
+
+        function saveVotes(votes) {
+            try { localStorage.setItem(VOTE_KEY, JSON.stringify(votes)); }
+            catch (e) { /* private mode etc. — voting just won't persist */ }
+        }
+
+        const MONTHS = ["january", "february", "march", "april", "may", "june",
+            "july", "august", "september", "october", "november", "december"];
+
+        function parseName(name) {
+            // 2023-08-18-153554.jpg -> date + time parts
+            const m = name.match(/^(\d{4})-(\d{2})-(\d{2})-(\d{2})(\d{2})(\d{2})\.jpg$/);
+            if (!m) return null;
+            return {
+                file: name,
+                dayKey: `${m[1]}-${m[2]}-${m[3]}`,
+                dayLabel: `${MONTHS[+m[2] - 1]} ${+m[3]}, ${m[1]}`,
+                time: `${m[4]}:${m[5]}:${m[6]}`
+            };
+        }
+
+        const photos = PHOTOS.map(parseName).filter(Boolean);
+        let newestFirst = true;
+
+        function render() {
+            const votes = loadVotes();
+            const ordered = photos.slice().sort((a, b) =>
+                newestFirst ? b.file.localeCompare(a.file) : a.file.localeCompare(b.file));
+
+            const days = [];
+            const byDay = {};
+            for (const p of ordered) {
+                if (!byDay[p.dayKey]) { byDay[p.dayKey] = []; days.push(p.dayKey); }
+                byDay[p.dayKey].push(p);
+            }
+
+            const archive = document.getElementById("archive");
+            archive.textContent = "";
+
+            for (const dayKey of days) {
+                const group = byDay[dayKey];
+                const section = document.createElement("section");
+                section.className = "archive-day";
+
+                const h2 = document.createElement("h2");
+                h2.textContent = group[0].dayLabel;
+                const count = document.createElement("span");
+                count.className = "day-count";
+                count.textContent = group.length === 1
+                    ? "1 photograph" : `${group.length} photographs`;
+                h2.appendChild(count);
+                section.appendChild(h2);
+
+                const grid = document.createElement("div");
+                grid.className = "archive-grid";
+
+                for (const p of group) {
+                    const fig = document.createElement("figure");
+                    fig.className = "figure-card";
+
+                    const box = document.createElement("div");
+                    box.className = "fig-box";
+                    const link = document.createElement("a");
+                    link.href = `images/${p.file}`;
+                    link.target = "_blank";
+                    link.rel = "noreferrer";
+                    const img = document.createElement("img");
+                    img.src = `images/${p.file}`;
+                    img.alt = `PS Vita photograph taken ${p.dayLabel} at ${p.time}`;
+                    img.loading = "lazy";
+                    img.decoding = "async";
+                    link.appendChild(img);
+                    box.appendChild(link);
+                    fig.appendChild(box);
+
+                    const cap = document.createElement("figcaption");
+                    const time = document.createElement("span");
+                    time.className = "photo-time";
+                    time.textContent = `${p.dayLabel} · ${p.time}`;
+                    cap.appendChild(time);
+                    cap.appendChild(makeVoteRow(p.file, votes));
+                    fig.appendChild(cap);
+
+                    grid.appendChild(fig);
+                }
+                section.appendChild(grid);
+                archive.appendChild(section);
+            }
+        }
+
+        function makeVoteRow(file, votes) {
+            const row = document.createElement("span");
+            row.className = "vote-row";
+            const state = votes[file] || 0;
+
+            const up = document.createElement("button");
+            up.className = "vote-btn" + (state === 1 ? " voted-up" : "");
+            up.textContent = `▲ ${state === 1 ? 1 : 0}`;
+            up.title = "upvote";
+
+            const down = document.createElement("button");
+            down.className = "vote-btn" + (state === -1 ? " voted-down" : "");
+            down.textContent = `▼ ${state === -1 ? 1 : 0}`;
+            down.title = "downvote";
+
+            function cast(dir) {
+                const v = loadVotes();
+                v[file] = (v[file] === dir) ? 0 : dir; // click again to un-vote
+                if (v[file] === 0) delete v[file];
+                saveVotes(v);
+                const s = v[file] || 0;
+                up.className = "vote-btn" + (s === 1 ? " voted-up" : "");
+                up.textContent = `▲ ${s === 1 ? 1 : 0}`;
+                down.className = "vote-btn" + (s === -1 ? " voted-down" : "");
+                down.textContent = `▼ ${s === -1 ? 1 : 0}`;
+            }
+
+            up.addEventListener("click", () => cast(1));
+            down.addEventListener("click", () => cast(-1));
+
+            row.appendChild(up);
+            row.appendChild(down);
+            return row;
+        }
+
+        // header stats
+        const sorted = photos.slice().sort((a, b) => a.file.localeCompare(b.file));
+        document.getElementById("photo-count").textContent = photos.length;
+        document.getElementById("range-start").textContent = sorted[0].dayLabel;
+        document.getElementById("range-end").textContent = sorted[sorted.length - 1].dayLabel;
+
+        // order toggle
+        const toggle = document.getElementById("oldest-newest-toggle");
+        toggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            newestFirst = !newestFirst;
+            toggle.textContent = newestFirst ? "oldest first" : "newest first";
+            render();
+        });
+
+        document.getElementById("top-link").addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        render();
+    </script>
+</body>
+
+</html>
