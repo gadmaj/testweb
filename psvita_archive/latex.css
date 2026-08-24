@@ -86,6 +86,45 @@ Only addition: the filename label under each photo.
     size-adjust: 100;
 }
 
+.hero {
+    height: calc(100vh - 56px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3vh;
+    padding: 0 16px;
+}
+
+.hero-text {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 18px;
+    margin: 0;
+}
+
+.hero-cycle {
+    max-height: 38vh;
+    max-width: min(90vw, 640px);
+    width: auto;
+    height: auto;
+}
+
+.hero-arrow {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 96px;
+    line-height: 1;
+    animation: hero-bounce 1.2s infinite;
+}
+
+@keyframes hero-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(14px); }
+}
+
 .page-header {
     font-size: 32px;
     padding: 18px 0 12px;
