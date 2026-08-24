@@ -111,10 +111,17 @@
             }
         }, { rootMargin: "150% 0px" });
 
-        // hero: cycle random photos
+        // hero: switch between these three photos only
+        const HERO_PHOTOS = [
+            "2024-02-23-132241.jpg",
+            "2024-02-23-132250.jpg",
+            "2024-02-23-132253.jpg"
+        ];
         const heroImg = document.getElementById("hero-cycle");
+        let heroIndex = 0;
         function cycleHero() {
-            heroImg.src = `images/${PHOTOS[Math.floor(Math.random() * PHOTOS.length)]}`;
+            heroImg.src = `images/${HERO_PHOTOS[heroIndex]}`;
+            heroIndex = (heroIndex + 1) % HERO_PHOTOS.length;
         }
         cycleHero();
         setInterval(cycleHero, 2500);
