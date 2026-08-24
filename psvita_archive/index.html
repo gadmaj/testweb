@@ -31,7 +31,6 @@
             </center>
             <p class="hero-text">web application i built in 2023 for senior year of highschool</p>
             <img class="hero-cycle" id="hero-cycle" alt="" decoding="async">
-            <a href="#image-container" class="hero-arrow" id="hero-arrow">&darr;</a>
         </section>
         <div class="image-container" id="image-container"></div>
         <div id="scroll-sentinel"></div>
@@ -119,12 +118,6 @@
         }
         cycleHero();
         setInterval(cycleHero, 2500);
-
-        document.getElementById("hero-arrow").addEventListener("click", (e) => {
-            e.preventDefault();
-            start();
-            document.getElementById("image-container").scrollIntoView({ behavior: "smooth" });
-        });
 
         function applyFilter() {
             const q = searchBox.value.trim();

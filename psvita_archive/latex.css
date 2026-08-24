@@ -111,20 +111,6 @@ Only addition: the filename label under each photo.
     height: auto;
 }
 
-.hero-arrow {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    font-size: 96px;
-    line-height: 1;
-    animation: hero-bounce 1.2s infinite;
-}
-
-@keyframes hero-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(14px); }
-}
-
 .page-header {
     font-size: 32px;
     padding: 18px 0 12px;
